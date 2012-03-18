@@ -1,2 +1,10 @@
 Alright guys, This is the git repository we're gonna use for the project.
 It may be better if we append all out programming update notes to this readme file.
+
+Updates:
+
+18/03/2012
+  - Created a test.php in the root directory to test the database connection. It turns out the server is using
+    a deprecated version of MySQL (version 4.1 - Oracle has stoped supporting it from 09.)
+    The modern version of php in incompatible with it. 
+    I recommend updated the mysql server before we proceed.

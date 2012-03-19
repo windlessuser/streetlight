@@ -13,8 +13,9 @@ ActiveRecord\Config::initialize(function($cfg)
 
 class Public_Request extends ActiveRecord\Model
 {
-	 # explicit table name since our table is not "books" 
-    static $table_name = 'public_request';
+	
+    static $table_name = 'public_request'; //explicit table name
+	static $primay_key = 'public_requestid'; //explicit primary key
 	
 	function generate_Reference()
 	{
@@ -29,7 +30,7 @@ class Public_Request extends ActiveRecord\Model
 		
 		try
 		{
-			$existingRequest = Public_Request::find_by_reference_no($referenceNo); 
+			$existingRequest = parent::find_by_reference_no($referenceNo); 
 		}
 		//In case the record does not exsist.
 		 catch(ActiveRecord\RecordNotFound $rnf)
@@ -50,7 +51,7 @@ class Public_Request extends ActiveRecord\Model
 
 			try
 			{
-				$existingRequest = Public_Request::find_by_reference_no($referenceNo); 
+				$existingRequest = parent::find_by_reference_no($referenceNo); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$existingRequest = array();
@@ -64,7 +65,7 @@ class Public_Request extends ActiveRecord\Model
 	{
 		try
 			{
-				$requestInfo = Public_Request::find_by_reference_no($referenceNo); 
+				$requestInfo = parent::find_by_reference_no($referenceNo); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$requestInfo = array();
@@ -76,7 +77,7 @@ class Public_Request extends ActiveRecord\Model
 	{
 		try
 			{
-				$requests = Public_Request::find_by_userid($userId); 
+				$requests = parent::find_by_userid($userId); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$requests = array();

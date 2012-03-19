@@ -14,14 +14,20 @@ class Streetlight extends ActiveRecord\Model
 {
 	
 	static $table_name = 'streetlight';
-    static $primary_key = 'streetlightid';
+    static $primary_key = 'streetlight_no';
 	protected $streetLightNo; 
 	
 	function retrieve_Streetlight($streetLightNo)
 	{
 		//$streetLight = Streetlight->find("streetlightid = $streetLightNo");
-		$streetLight =& parent::find($streetLightNo);  
-/*
+		 try{
+			$streetLight =& parent::find($streetLightNo);
+		 }
+		 //In case the record does not exsist.
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$streetLight = array();
+		 }
+/*		
 		//$posts = Post::find('all',array('conditions' => array('name=?','The Bridge Builder')));
 		$streetLight = Streetlight::find('all', array('conditions' => array('streetlight_no=?', $streetLightNo)));
 		//$streetLight =& parent::find_by_streetlight_no($this->streetLightNo);  
@@ -32,7 +38,7 @@ class Streetlight extends ActiveRecord\Model
 
 
 	$sl = new Streetlight;
-	echo "Streetlight: ".print_r($sl->retrieve_Streetlight("101"));
+	print_r($sl->retrieve_Streetlight("101"));
 	
 	
 ?>

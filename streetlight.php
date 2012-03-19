@@ -1,8 +1,7 @@
 <?php
-require_once 'php-activerecord/ActiveRecord.php';
+require_once ('php-activerecord/ActiveRecord.php');
 
-ActiveRecord\Config::initialize(function($cfg)
- {
+ActiveRecord\Config::initialize(function($cfg) {
      $cfg->set_model_directory('models');
      $cfg->set_connections(array(
          'development' => 'mysql://root:@localhost/streetlight')
@@ -13,7 +12,9 @@ ActiveRecord\Config::initialize(function($cfg)
 
 class Streetlight extends ActiveRecord\Model
 {
-	var $streetLightNo; 
+	
+	static $table_name = 'streetlight';
+	protected $streetLightNo; 
 	
 	function retrieve_Streetlight($streetLightNo)
 	{

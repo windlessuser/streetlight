@@ -15,9 +15,6 @@ class Public_Request extends ActiveRecord\Model
 {
 	 # explicit table name since our table is not "books" 
     static $table_name = 'public_request';
-	private $referenceNumber = 000000; //class variable instantiated to a default value.currently not being used
-	
-	//save update, delete  and most retrieve methods will be handled by the active record
 	
 	function generate_Reference()
 	{
@@ -32,15 +29,15 @@ class Public_Request extends ActiveRecord\Model
 		
 		try
 		{
-			$existingRequest = Public_Request::find("reference_no = $referenceNo"); 
-			echo $existingRequest;
+			$existingRequest = Public_Request::find_by_reference_no($referenceNo); 
 		}
-		catch(Exception $e)
-		{
-			$existingRequest  = null;
-		}
+		//In case the record does not exsist.
+		 catch(ActiveRecord\RecordNotFound $rnf)
+		 {
+			$existingRequest = array();
+		 }
 		
-		/*While (!(isset($existingRequest)))
+		While (isset($exsistingRequest->reference_no))  // loops until it generates a unique reference
 		{			
 			$currentDateTime = getdate();
 			$year = substr($currentDateTime['year'],-2);
@@ -51,33 +48,41 @@ class Public_Request extends ActiveRecord\Model
 			$minutes++;
 			$referenceNo = $year."".$month."".$day."".$hours."".$minutes;
 
-			$existingRequest = Public_Request::find("reference_no = $referenceNo"); 
+			try
+			{
+				$existingRequest = Public_Request::find_by_reference_no($referenceNo); 
+			}
+			catch(ActiveRecord\RecordNotFound $rnf){
+				$existingRequest = array();
+			} 
 		}
-		*/
-		
 		return $referenceNo;
 	}
 	
 	
 	function retrieve_PublicRequestbyReference($referenceNo)
 	{
-		$requestInfo = Public_Request::find("reference_no = $referenceNo"); // retrieves a particular request information and stores the result into an array.
-		
+		try
+			{
+				$requestInfo = Public_Request::find_by_reference_no($referenceNo); 
+			}
+			catch(ActiveRecord\RecordNotFound $rnf){
+				$requestInfo = array();
+			} 
 		return $requestInfo;
 	}
 	
 	function retrieve_UserRequests($userId)
 	{
-		$requests = Public_Request::find("userid = $userId"); // retrieves a particular user's requests and stores the result into an array.
-		
+		try
+			{
+				$requests = Public_Request::find_by_userid($userId); 
+			}
+			catch(ActiveRecord\RecordNotFound $rnf){
+				$requests = array();
+			} 
 		return $requests;
 	}
 	
-	function retrieve_AllRequests($userId)
-	{
-		$requests = Public_Request::find(); // retrieves all requests and stores the result into an array.
-		
-		return $requests;
-	}
 }
 ?>

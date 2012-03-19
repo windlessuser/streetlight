@@ -30,6 +30,12 @@ Updates:
 	- My file public_request_xml creates an xml representation of the public_request table.
 	
 	-I've also made some corrections to Valdeck's files. He's still getting the hang of oop.
-	 The commented out lines are his while the line underneath is my correction.  
+	 The commented out lines are his while the line underneath is my correction. 
+ 
+
+19-03-2012 - michael >
+       - Please use a data dump of the sql as the host are using an out dated version 
+       - please add a field called "change-yn" to the user table
+         this will allow marc to download the users who have changed their phone numbers or addressesso he can update the local table.  
 	
   

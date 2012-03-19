@@ -28,10 +28,18 @@ class Public_Request extends ActiveRecord\Model
 		$minutes = $currentDateTime['minutes'];
 		
 		$referenceNo = $year."".$month."".$day."".$hours."".$minutes;
-	
-		$existingRequest = Public_Request::find("reference_no = $referenceNo"); 
 		
-		While ($existingRequest != null)
+		try
+		{
+			$existingRequest = Public_Request::find("reference_no = $referenceNo"); 
+			echo $existingRequest;
+		}
+		catch(Exception $e)
+		{
+			$existingRequest  = null;
+		}
+		
+		/*While (!(isset($existingRequest)))
 		{			
 			$currentDateTime = getdate();
 			$year = substr($currentDateTime['year'],-2);
@@ -44,6 +52,7 @@ class Public_Request extends ActiveRecord\Model
 
 			$existingRequest = Public_Request::find("reference_no = $referenceNo"); 
 		}
+		*/
 		
 		return $referenceNo;
 	}

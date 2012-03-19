@@ -21,6 +21,11 @@ class Streetlight extends ActiveRecord\Model
 	{
 		//$streetLight = Streetlight->find("streetlightid = $streetLightNo");
 		$streetLight =& parent::find($streetLightNo);  
+/*
+		//$posts = Post::find('all',array('conditions' => array('name=?','The Bridge Builder')));
+		$streetLight = Streetlight::find('all', array('conditions' => array('streetlight_no=?', $streetLightNo)));
+		//$streetLight =& parent::find_by_streetlight_no($this->streetLightNo);  
+*/
 		return $streetLight;
 	}
 }

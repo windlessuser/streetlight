@@ -12,7 +12,9 @@ ActiveRecord\Config::initialize(function($cfg)
 
 class Public_Request extends ActiveRecord\Model
 {
-	var $referenceNumber = 000000; //class variable instantiated to a default value.currently not being used
+	 # explicit table name since our table is not "books" 
+    static $table_name = 'public_request';
+	private $referenceNumber = 000000; //class variable instantiated to a default value.currently not being used
 	
 	//save update, delete  and most retrieve methods will be handled by the active record
 	

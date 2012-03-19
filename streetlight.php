@@ -14,12 +14,13 @@ class Streetlight extends ActiveRecord\Model
 {
 	
 	static $table_name = 'streetlight';
+    static $primary_key = 'streetlightid';
 	protected $streetLightNo; 
 	
 	function retrieve_Streetlight($streetLightNo)
 	{
 		//$streetLight = Streetlight->find("streetlightid = $streetLightNo");
-		$streetLight =& $this->find_by_streetlightid($this->streetLightNo);  
+		$streetLight =& parent::find($streetLightNo);  
 		return $streetLight;
 	}
 }

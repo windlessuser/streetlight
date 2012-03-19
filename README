@@ -8,3 +8,8 @@ Updates:
     a deprecated version of MySQL (version 4.1 - Oracle has stoped supporting it from 09.)
     The modern version of php in incompatible with it. 
     I recommend updated the mysql server before we proceed.
+
+18-03-2012 
+  created the public_request_form.php (HTML/CSS) to be prepulated and edited as necessary by the user
+  - Valdeck
+  

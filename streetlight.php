@@ -18,7 +18,8 @@ class Streetlight extends ActiveRecord\Model
 	
 	function retrieve_Streetlight($streetLightNo)
 	{
-		$streetLight = Streetlight->find("streetlightid = $streetLightNo"); 
+		//$streetLight = Streetlight->find("streetlightid = $streetLightNo");
+		$streetLight =& $this->find_by_streetlightid($this->streetLightNo);  
 		return $streetLight;
 	}
 }

@@ -15,8 +15,8 @@ ActiveRecord\Config::initialize(function($cfg)
 
 	function retrieve_UserInfo($userId)
 	{ 
-		$userInfo = user->find("userid = $userId");  // retrieves a particular user's information and stores the result into an array.
-				
+		//$userInfo = user->find("userid = $userId");  // retrieves a particular user's information and stores the result into an array.
+		$userInfo = $this->find_by_userid($userId);
 		return $userInfo;
 	}	
 }

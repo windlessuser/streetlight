@@ -1,9 +1,12 @@
 Alright guys, This is the git repository we're gonna use for the project.
 It may be better if we append all out programming update notes to this readme file.
 
+NOTE: Seeing as we are speaking about our updates in this README, commit messages will have the following format:
+		commit -a -m "See Update XX-XX-XXXX -My Name"
+
 Updates:
 
-18/03/2012
+18-03-2012
   - Created a test.php in the root directory to test the database connection. It turns out the server is using
     a deprecated version of MySQL (version 4.1 - Oracle has stoped supporting it from 09.)
     The modern version of php in incompatible with it. 
@@ -12,4 +15,21 @@ Updates:
 18-03-2012 
   created the public_request_form.php (HTML/CSS) to be prepulated and edited as necessary by the user
   - Valdeck
+  
+19-03-2012
+  	- Kadeem and I have discovered that it saves us some worries when we explicitly delcare the name of the table in our models. you do this by making
+	  a static variable in the class:
+	  eg. static $table_name = 'table_name';  reference: http://www.phpactiverecord.org/projects/main/wiki/Conventions
+	  
+	- It would be wise to take a good look at the active records wiki. I'm just truly appreciating how awesome it is.
+	  lets say you want to find some in a table. You can do it like this:
+	  	Table::find_by_table_attribute($variable); 
+	  It will find the records(s) in the table that meet the conditions. You can also use other sql verbs in it
+	  example: Table::find_by_attribute1_or_attribute2($v1,$v2); This works like your standard SQL or.
+	  
+	- My file public_request_xml creates an xml representation of the public_request table.
+	
+	-I've also made some corrections to Valdeck's files. He's still getting the hang of oop.
+	 The commented out lines are his while the line underneath is my correction.  
+	
   

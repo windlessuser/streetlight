@@ -30,7 +30,7 @@ class Public_Request extends ActiveRecord\Model
 		
 		try
 		{
-			$existingRequest = parent::find_by_reference_no($referenceNo); 
+			$existingRequest =& parent::find_by_reference_no($referenceNo); 
 		}
 		//In case the record does not exsist.
 		 catch(ActiveRecord\RecordNotFound $rnf)
@@ -40,8 +40,8 @@ class Public_Request extends ActiveRecord\Model
 		
 		While (isset($exsistingRequest->reference_no))  // loops until it generates a unique reference
 		{			
-			$currentDateTime = getdate();
-			$year = substr($currentDateTime['year'],-2);
+			$currentDateTime =& getdate();
+			$year =& substr($currentDateTime['year'],-2);
 			$month = $currentDateTime['mon'];
 			$day = $currentDateTime['mday'];
 			$hours = $currentDateTime['hours'];
@@ -51,7 +51,7 @@ class Public_Request extends ActiveRecord\Model
 
 			try
 			{
-				$existingRequest = parent::find_by_reference_no($referenceNo); 
+				$existingRequest =& parent::find_by_reference_no($referenceNo); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$existingRequest = array();
@@ -65,7 +65,7 @@ class Public_Request extends ActiveRecord\Model
 	{
 		try
 			{
-				$requestInfo = parent::find_by_reference_no($referenceNo); 
+				$requestInfo =& parent::find_by_reference_no($referenceNo); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$requestInfo = array();
@@ -77,7 +77,7 @@ class Public_Request extends ActiveRecord\Model
 	{
 		try
 			{
-				$requests = parent::find_by_userid($userId); 
+				$requests =& parent::find_by_userid($userId); 
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$requests = array();

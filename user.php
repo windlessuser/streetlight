@@ -12,11 +12,12 @@ ActiveRecord\Config::initialize(function($cfg)
  
  class User extends ActiveRecord\Model
 {
-
+	static $table_name = 'users';
+	static $primay_key = 'userid';
 	function retrieve_UserInfo($userId)
 	{ 
 		//$userInfo = user->find("userid = $userId");  // retrieves a particular user's information and stores the result into an array.
-		$userInfo = $this->find_by_userid($userId);
+		$userInfo =& parent::find($userId);
 		return $userInfo;
 	}	
 }

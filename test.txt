@@ -1,0 +1,18 @@
+insert into rebates
+
+Councilid,	
+StreetlightNo,
+PaymentDate,	
+RepairApplicationid,
+DaysSinceNonfunctional,	
+StreetLightInspectionid,	
+AmountNotPaid,
+WattageFee,
+HoursPerDay,	
+Wattage,
+EntryDate,
+UpdateDate
+
+
+curdate(),	
+curdate()	

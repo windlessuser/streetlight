@@ -6,17 +6,17 @@ NOTE: Seeing as we are speaking about our updates in this README, commit message
 
 Updates:
 
-18-03-2012
+18-03-2012 - Marc
   - Created a test.php in the root directory to test the database connection. It turns out the server is using
     a deprecated version of MySQL (version 4.1 - Oracle has stoped supporting it from 09.)
     The modern version of php in incompatible with it. 
     I recommend updated the mysql server before we proceed.
 
-18-03-2012 
+18-03-2012 - Valdeck
   created the public_request_form.php (HTML/CSS) to be prepulated and edited as necessary by the user
-  - Valdeck
   
-19-03-2012
+  
+19-03-2012 - Marc
   	- Kadeem and I have discovered that it saves us some worries when we explicitly delcare the name of the table in our models. you do this by making
 	  a static variable in the class:
 	  eg. static $table_name = 'table_name';  reference: http://www.phpactiverecord.org/projects/main/wiki/Conventions
@@ -29,7 +29,7 @@ Updates:
 	  
 	- My file public_request_xml creates an xml representation of the public_request table.
 	
-	-I've also made some corrections to Valdeck's files. He's still getting the hang of oop.
+	-I've also made some corrections to Valdeck's files (streetlight.php, user.php). He's still getting the hang of oop.
 	 The commented out lines are his while the line underneath is my correction.  
 	
   

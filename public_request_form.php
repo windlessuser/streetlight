@@ -122,7 +122,14 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight operational (y/n) : </div> </div>
-        <div class="td"> <input type="checkbox" name="thisStreetlight_operational_ynField" value="" checked></div> 
+        <div class="td"> 
+            <label>
+              <input type="radio" name="thisStreetlight_operational_ynField" value="y" id="RadioGroup1_2" />
+              Yes</label>
+            <label>
+              <input type="radio" name="thisStreetlight_operational_ynField" value="n" id="RadioGroup1_3" />
+              No</label>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight defect typeid : </div> </div>
@@ -140,8 +147,14 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Public request open (y/n) : </div> </div>
-        <div class="td"> <input type="checkbox" name="thisPublic_request_open_ynField" value="" checked>
-    <input type="checkbox" name="thisPublic_request_open_ynField" value="">  </div> 
+        <div class="td"> 
+        <label>
+        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" />
+        Yes</label>
+      	<label>
+        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" />
+        No</label>
+      </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> User Id : </div> </div>

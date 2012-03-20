@@ -42,4 +42,6 @@ Updates:
 		-I have finished the generation of unique references for public requests. Had some issues with active records but that has been solved.
 		-The next step is to add functionality to Valdeck's public request form. I dont think we need all of those fields on the form though.eg public_requestid
 		
+19-03-2012 - Valdeck
+	- made adjustments to user.php to facilitate error checking and correct data retrieval
   

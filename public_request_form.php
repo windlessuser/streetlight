@@ -1,7 +1,8 @@
 <style type="text/css">
 
 .tbl {
-	width:auto;
+	width:450px;
+	float:left;
 }
 
 .tr {
@@ -10,7 +11,7 @@
 
 .td {
 	float:left;
-	width:45%;
+	width:49%;
 	padding: 2px;
 }
 
@@ -24,10 +25,10 @@
 <form name="public_requestForm" method="POST" action="">
 
 <div class="tbl">
-    <div class="tr">
+    <!--<div class="tr">
         <div class="td"> <div class="fieldtitle"> Public Request Id : </div> </div>
         <div class="td"> <input type="text" name="thisPublic_requestidField" size="20" value="">  </div> 
-    </div>
+    </div>-->
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Reference no : </div> </div>
         <div class="td"> <input type="text" name="thisReference_noField" size="20" value="">  </div> 
@@ -79,8 +80,14 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Remarks : </div> </div>
-        <div class="td"> <textarea name="thisRemarksField" wrap="VIRTUAL" cols="35" rows="4"></textarea>  </div> 
+        <div class="td"> 
+        	<textarea name="thisRemarksField" wrap="VIRTUAL" cols="25" rows="4">
+            </textarea>  
+        </div> 
     </div>
+</div>
+<div class="tbl">
+
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Council Id : </div> </div>
         <div class="td"> <input type="text" name="thisCouncilidField" size="20" value="">  </div> 
@@ -119,11 +126,13 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight defect typeid : </div> </div>
-        <div class="td"> <input type="text" name="thisStreetlight_defect_typeidField" size="20" value="">  </div> 
+        <div class="td"> 
+        	<input type="text" name="thisStreetlight_defect_typeidField" size="20" value="">  
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight defect type remarks : </div> </div>
-        <div class="td"> <textarea name="thisStreetlight_defect_type_remarksField" wrap="VIRTUAL" cols="35" rows="4"></textarea>  </div> 
+        <div class="td"> <textarea name="thisStreetlight_defect_type_remarksField" wrap="VIRTUAL" cols="25" rows="4"></textarea>  </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Public request statusid : </div> </div>
@@ -150,7 +159,7 @@
         <div class="td"> <div class="fieldtitle"> Official comments : </div> </div>
         <div class="td"> <textarea name="thisOfficial_commentsField" wrap="VIRTUAL" cols="20" rows="4"></textarea>  </div> 
     </div>
-    <div class="tr">
+<!--    <div class="tr">
         <div class="td"> <div class="fieldtitle"> Create date : </div> </div>
         <div class="td"> <input type="text" name="thisCreate_dateField" size="20" value="">  </div> 
     </div>
@@ -158,6 +167,7 @@
         <div class="td"> <div class="fieldtitle"> Update date : </div> </div>
         <div class="td"> <input type="text" name="thisUpdate_dateField" size="20" value="">  </div> 
     </div>
+-->
 </div>
 
 <input type="submit" name="submitEnterPublic_requestForm" value="Enter Public_request">

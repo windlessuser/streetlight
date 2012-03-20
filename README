@@ -44,4 +44,12 @@ Updates:
 		
 19-03-2012 - Valdeck
 	- made adjustments to user.php to facilitate error checking and correct data retrieval
+
+20-03-2012 - valdeck
+        - marc - i found the mail file
+               - remember to create a duplicate table of the public_request and user so u can insert the new records into
+               - also remember to update the online records the status change and the official_remarks
+
+
+
   

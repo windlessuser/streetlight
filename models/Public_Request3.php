@@ -15,7 +15,7 @@ ActiveRecord\Config::initialize(function($cfg)
 
 class Public_Request extends ActiveRecord\Model 
 {
-	static $table_name = 'public_request';
+	static $table_name = 'public_request_copy';
 	static $primary_key = 'public_requestid';
 }
 

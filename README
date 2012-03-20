@@ -50,6 +50,15 @@ Updates:
                - remember to create a duplicate table of the public_request and user so u can insert the new records into
                - also remember to update the online records the status change and the official_remarks
 
+20-03-2012 - Marc
+			-Valdeck, add the file to the repo
+			-I've set up a new directory structure after discussing it with Mr. Gordon
+			-I've created a new file public_request_json. This creates a json feed of the public_request table.
+			-I've also created a mechanisim for us to take that json feed and use it to synchronise another database.
+				-- remember we to change the database settings where appropriate
+				-- The mechanisim requires php cURL to be enabled on your server, check ur apporpriate documentation to do such.
+				-- For testing perposes, you need to create a duplicate table of public_request. I called mine public_request copy.
+					make appropriate changes if your doing your own thing, but I recommend we stick to a convention.
 
 
   

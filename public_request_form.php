@@ -11,7 +11,7 @@
 
 .td {
 	float:left;
-	width:49%;
+	width:48%;
 	padding: 2px;
 }
 
@@ -31,7 +31,7 @@
     </div>-->
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Reference no : </div> </div>
-        <div class="td"> <input type="text" name="thisReference_noField" size="20" value="">  </div> 
+        <div class="td"> <input name="thisReference_noField" type="text" value="" size="20" readonly="readonly">  </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Request date : </div> </div>
@@ -55,8 +55,13 @@
         <div class="td"> <input type="text" name="thisOrganizationField" size="20" value="">  </div> 
     </div>
     <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Organization type Id : </div> </div>
-        <div class="td"> <input type="text" name="thisOrganization_typeidField" size="20" value="">  </div> 
+        <div class="td"> <div class="fieldtitle"> Organization type  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisOrganization_typeidField" size="20" value="">-->
+          <select name="thisOrganization_typeidField" id="thisOrganization_typeidField">
+            <!-- pull from council tbl in db  -->
+            <option value="1">1</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Phone : </div> </div>
@@ -89,16 +94,31 @@
 <div class="tbl">
 
     <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Council Id : </div> </div>
-        <div class="td"> <input type="text" name="thisCouncilidField" size="20" value="">  </div> 
+        <div class="td"> <div class="fieldtitle"> Council  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisCouncilidField" size="20" value="">-->
+          <select name="thisCouncilidField" id="thisCouncilidField">
+            <!-- pull from council tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Division Id : </div> </div>
-        <div class="td"> <input type="text" name="thisDivisionidField" size="20" value="">  </div> 
+        <div class="td"> <div class="fieldtitle"> Division  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisDivisionidField" size="20" value="">-->
+          <select name="thisDivisionidField" >
+            <!-- pull from division tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> District Id : </div> </div>
-        <div class="td"> <input type="text" name="thisDistrictidField" size="20" value="">  </div> 
+        <div class="td"> <!--<input type="text" name="thisDistrictidField" size="20" value="">-->
+          <select name="thisDistrictidField" id="thisDistrictidField">
+            <!-- pull from discrict tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Street : </div> </div>

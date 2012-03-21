@@ -260,7 +260,7 @@ form {
     </div>-->
     <div class="tr">
         <div class="fieldtitle"> Request date : </div> 
-        <div class="td"> <input type="text" name="thisRequest_dateField" size="23" value="<?php echo $requestDate; ?>"  </div> 
+        <div class="td"> <input type="text" name="thisRequest_dateField" size="23" value="<?php echo $requestDate; ?>" /> </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> First name : </div> 
@@ -343,28 +343,28 @@ form {
     <div class="tr">
         <div class="fieldtitle"> Council  : </div> 
         <div class="td"> 
-          <select name="thisCouncilidField" id="thisCouncilidField" style="min-width:100px;">
-            <!-- pull from council tbl in db  -->
-            <option value="id">name</option>
-          </select>
-        </div> 
+        	<!-- space for the id hidden -->
+        	<input type="hidden" name="thisCouncilidField" size="20" value="">
+        	<!-- space for the name based on the  id -->
+        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly"/>
+       </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Division  : </div> 
         <div class="td">
-          <select name="thisDivisionidField" id="thisDivisionidField" style="min-width:100px;">
-            <!-- pull from division tbl in db  -->
-            <option value="id">name</option>
-          </select>
+        	<!-- space for the id hidden -->
+            <input type="hidden" name="thisDivisionidField" size="20" value="">
+        	<!-- space for the name based on the  id -->
+        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
         </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> District  : </div> 
-        <div class="td"> <!--<input type="text" name="thisDistrictidField" size="20" value="">-->
-          <select name="thisDistrictidField" id="thisDistrictidField" style="min-width:100px;">
-            <!-- pull from discrict tbl in db  -->
-            <option value="id">name</option>
-          </select>
+        <div class="td"> 
+        	<!-- space for the id hidden -->
+        	<input type="hidden" name="thisDistrictidField" size="20" value="">
+        	<!-- space for the name based on the  id -->
+        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
         </div> 
     </div>
     <div class="tr">
@@ -389,12 +389,12 @@ form {
         <div class="td"> <textarea name="thisStreetlight_defect_type_remarksField" wrap="VIRTUAL" cols="25" rows="4"></textarea>  </div> 
     </div>
     <div class="tr">
-        <div class="fieldtitle"> Public request statusid : </div> 
-        <div class="td"> <!--<input type="text" name="thisPublic_request_statusidField" size="20" value="">-->
-          <select name="thisPublic_request_statusidField" id="thisPublic_request_statusidField" style="min-width:100px;">
-            <!-- pull from discrict tbl in db  -->
-            <option value="id">name</option>
-          </select>
+        <div class="fieldtitle"> Public request status : </div> 
+        <div class="td"> 
+        	<!-- space for the id hidden -->
+            <input type="hidden" name="thisPublic_request_statusidField" size="20" value="">
+        	<!-- space for the name based on the  id -->
+        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
         </div> 
     </div>
     <div class="tr">

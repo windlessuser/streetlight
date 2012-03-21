@@ -16,17 +16,18 @@ ActiveRecord\Config::initialize(function($cfg)
     static $primary_key = 'userid';
 	protected $userId; 
 
-	function retrieve_UserInfo($userId)
+	Public function retrieve_UserInfo($userId)
 	{ 
-		//$userInfo = user->find("userid = $userId");  
-		try{
-			$userInfo =& parent::find($userId);
+		try
+		{
+			$orgTypeJoin = 'LEFT OUTER JOIN organization_type ON users.organization_typeid = organization_type.organization_typeid';
+			$sel = '*,organization_type.organization_type AS organizationType';
+		
+			$userInfo =& parent::find($userId,array('joins' => array($orgTypeJoin),'select'=>$sel));
 		}
 		 catch(ActiveRecord\RecordNotFound $rnf){
 			$userInfo = array();
 		 }
-		
-		// retrieves a particular user's information and stores the result into an array.
 				
 		return $userInfo;
 	}	

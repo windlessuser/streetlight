@@ -1,3 +1,128 @@
+<?php
+include('models/streetlight.php');
+
+session_start(); 
+//this is just for testing purposes
+$_SESSION['SESSION_STATUS']=1;
+$_SESSION['SESSION_USER_NAME']='mgordon';
+$_SESSION['SESSION_USER_ID']=1;
+
+$requestDate='';
+$firstName='';
+$lastName = '';
+$address = '';
+$organisation ='';
+$organizationType = ''; 
+$phone = '';
+$cell='';
+$fax='';
+$email='';
+$website='';
+$remarks='';
+$reference = '';
+$street='';
+$strtLightLocation = '';
+$strtLightName = '';
+$scheme = '';
+$streetlightNo = '';
+$council='';
+$division = '';
+$district = '';
+$isStrtLightOperational='';
+$streetLightDefect='';
+$defectRemarks='';
+$publicRequestStatus='';
+$requestOpen='';
+$longtitude = '';
+$latitude = '';
+$OfficialComments='';
+
+if (isset($_POST['Streetlight_Submit']))
+{
+	$streetlightNo = $_POST['thisStreetlight_noField'];
+	$userId = $_SESSION['SESSION_USER_ID'];
+	
+	$streetlightInfo = Streetlight::retrieve_StreetlightInfo($streetlightNo);
+	$userInfo = User::retrieve_UserInfo($userId);
+	$referenceNo = Public_Request::generate_Reference();
+	
+	//echo $userInfo->organizationType;
+
+	$currentDateTime = getdate();
+	//$year = substr($currentDateTime['year'],-2);
+	$year = $currentDateTime['year'];
+	$month = $currentDateTime['month'];
+	$day = $currentDateTime['mday'];
+	
+	$currentDate = $month." ".$day.", ".$year;
+	
+	GLOBAL $requestDate;
+	GLOBAL $firstName;
+	GLOBAL $lastName;
+	GLOBAL $address;
+	GLOBAL $organisation;
+	GLOBAL $organizationType; 
+	GLOBAL $phone;
+	GLOBAL $cell;
+	GLOBAL $fax;
+	GLOBAL $email;
+	GLOBAL $website;
+	GLOBAL $remarks;
+	GLOBAL $reference;
+	GLOBAL $street;
+	GLOBAL $strtLightLocation;
+	GLOBAL $strtLightName;
+	GLOBAL $scheme;
+	GLOBAL $streetlightNo;
+	GLOBAL $council;
+	GLOBAL $division;
+	GLOBAL $district;
+	GLOBAL $isStrtLightOperational;
+	GLOBAL $streetLightDefect;
+	GLOBAL $defectRemarks;
+	GLOBAL $publicRequestStatus;
+	GLOBAL $requestOpen;
+	GLOBAL $longtitude;
+	GLOBAL $latitude;
+	GLOBAL $OfficialComments;
+	
+	$requestDate=$currentDate;
+	$firstName= $userInfo->firstname;
+	$lastName = $userInfo->surname;
+	$address = '';
+	$organisation = $userInfo->organization_name;
+	$organizationType = '';
+	$phone = '';
+	$cell='';
+	$fax='';
+	$email='';
+	$website='';
+	$remarks='';
+	$reference = $referenceNo;
+	$street= $streetlightInfo->street;
+	$strtLightLocation = '';
+	$strtLightName = '';
+	$scheme = '';
+	$streetlightNo = '';
+	$council='';
+	$division = '';
+	$district = '';
+	$isStrtLightOperational='';
+	$streetLightDefect='';
+	$defectRemarks='';
+	$publicRequestStatus='';
+	$requestOpen='';
+	$longtitude = '';
+	$latitude = '';
+	$OfficialComments='';
+
+}
+
+?>
+
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
@@ -117,13 +242,14 @@ form {
 
 </style>
 
-<form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
+<form method="post" action="<?php $_SERVER['PHP_SELF']?>">
 <div class="ctr">
-  	<strong>Enter Streetlight # to be reported  : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
-    <input type="submit" value="Submit" class="normwidth" /> </strong>
+  	<strong>Enter Streetlight # to be reported  : <input type="text" name="thisStreetlight_noField" size="14" value="" class="normwidth"> 
+    <input type="submit" value="Submit" name="Streetlight_Submit" class="normwidth" /> </strong>
     
 </div>
 </form>
+
 <div class="clear"></div>
 <form name="public_requestForm" method="POST" action="">
 
@@ -134,15 +260,15 @@ form {
     </div>-->
     <div class="tr">
         <div class="fieldtitle"> Request date : </div> 
-        <div class="td"> <input type="text" name="thisRequest_dateField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisRequest_dateField" size="23" value="<?php echo $requestDate; ?>"  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> First name : </div> 
-        <div class="td"> <input type="text" name="thisFirstnameField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisFirstnameField" size="23" value="<?php echo $firstName?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Last name : </div> 
-        <div class="td"> <input type="text" name="thisLastnameField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisLastnameField" size="23" value="<?php echo $lastName?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Address : </div> 
@@ -152,11 +278,11 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Organization : </div> 
-        <div class="td"> <input type="text" name="thisOrganizationField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisOrganizationField" size="23" value="<?php echo $organisation; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Organization type  : </div> 
-        <div class="td"> <input type="text" name="thisOrganization_typeidField" size="23" value="">
+        <div class="td"> <input type="text" name="thisOrganization_typeidField" size="23" value="<?php echo $organizationType; ?>">
         </div> 
     </div>
     <div class="tr">
@@ -191,7 +317,7 @@ form {
 <div class="tbl">
     <div class="tr">
         <div class="fieldtitle"> Reference no : </div> 
-        <div class="td"> <input name="thisReference_noField" type="text" value="" size="23" readonly="readonly">  </div> 
+        <div class="td"> <input name="thisReference_noField" type="text" value="<?php echo $reference; ?>" size="23" readonly="readonly">  </div> 
     </div>
 
     <div class="tr">
@@ -216,8 +342,8 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Council  : </div> 
-        <div class="td"> <!--<input type="text" name="thisCouncilidField" size="20" value="">-->
-          <select name="thisCouncilidField" id="thisCouncilidField">
+        <div class="td"> 
+          <select name="thisCouncilidField" id="thisCouncilidField" style="min-width:100px;">
             <!-- pull from council tbl in db  -->
             <option value="id">name</option>
           </select>
@@ -225,8 +351,8 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Division  : </div> 
-        <div class="td"> <!--<input type="text" name="thisDivisionidField" size="20" value="">-->
-          <select name="thisDivisionidField" >
+        <div class="td">
+          <select name="thisDivisionidField" id="thisDivisionidField" style="min-width:100px;">
             <!-- pull from division tbl in db  -->
             <option value="id">name</option>
           </select>
@@ -235,7 +361,7 @@ form {
     <div class="tr">
         <div class="fieldtitle"> District  : </div> 
         <div class="td"> <!--<input type="text" name="thisDistrictidField" size="20" value="">-->
-          <select name="thisDistrictidField" id="thisDistrictidField">
+          <select name="thisDistrictidField" id="thisDistrictidField" style="min-width:100px;">
             <!-- pull from discrict tbl in db  -->
             <option value="id">name</option>
           </select>
@@ -265,7 +391,7 @@ form {
     <div class="tr">
         <div class="fieldtitle"> Public request statusid : </div> 
         <div class="td"> <!--<input type="text" name="thisPublic_request_statusidField" size="20" value="">-->
-          <select name="thisPublic_request_statusidField" id="thisPublic_request_statusidField">
+          <select name="thisPublic_request_statusidField" id="thisPublic_request_statusidField" style="min-width:100px;">
             <!-- pull from discrict tbl in db  -->
             <option value="id">name</option>
           </select>

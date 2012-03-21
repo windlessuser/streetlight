@@ -21,12 +21,14 @@ ActiveRecord\Config::initialize(function($cfg)
 	{
 		try
 			{
-				$districtJoin = 'INNER JOIN district ON streetlight.districtid =  district.districtid';
-				$divisionJoin = 'INNER JOIN division ON streetlight.divisionid = division.divisionid';
-				$councilJoin = 'INNER JOIN councils ON streetlight.councilid = councils.councilid';
-				$sel = '*,councils.council AS councilName,division.division AS divisionName,district.district AS districtName';
+				$districtJoin = 'LEFT OUTER JOIN district ON streetlight.districtid =  district.districtid';
+				$divisionJoin = 'LEFT OUTER JOIN division ON streetlight.divisionid = division.divisionid';
+				$councilJoin = 'LEFT OUTER JOIN councils ON streetlight.councilid = councils.councilid';
+				$strtLightTypeJoin = 'LEFT OUTER JOIN streetlight_type ON streetlight.streetlight_typeid = streetlight_type.streetlight_typeid';
 				
-				$requests =& parent::find_by_streetlight_no($streetlightNo,array('joins' => array($districtJoin,$divisionJoin,$councilJoin),'select'=>$sel));
+				$sel = '*,councils.council AS councilName,division.division AS divisionName,district.district AS districtName,streetlight_type.streetlight_type AS streetlightType';
+				
+				$requests =& parent::find_by_streetlight_no($streetlightNo,array('joins' => array($districtJoin,$divisionJoin,$councilJoin,$strtLightTypeJoin),'select'=>$sel));
 			}
 			catch(ActiveRecord\RecordNotFound $rnf){
 				$requests = array();

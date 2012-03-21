@@ -119,7 +119,7 @@ form {
 
 <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
 <div class="ctr">
-  	<strong>Enter Streetlight # to be reported  : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
+  	<strong>Enter streetlight # to be reported  : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
     <input type="submit" value="Submit" class="normwidth" /> </strong>
     
 </div>

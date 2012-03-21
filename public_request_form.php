@@ -99,11 +99,23 @@
 	border:none;
 	margin-right:14px;
 }
+
+input {
+	width:200px;
+}
+textarea {
+	width:200px;
+}
+.normwidth{
+	width:auto;
+}
+
 </style>
 
 <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
 <div class="!ctr">
-  	<h3>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value=""> <input type="submit" value="Submit" /> </h3>
+  	<h3>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
+    <input type="submit" value="Submit" class="normwidth" /> </h3>
     
 </div>
 </form>
@@ -228,10 +240,10 @@
         <div class="fieldtitle"> Streetlight operational (y/n) : </div> 
         <div class="td"> 
             <label>
-              <input type="radio" name="thisStreetlight_operational_ynField" value="y" id="RadioGroup1_2" />
+              <input type="radio" name="thisStreetlight_operational_ynField" value="y" id="RadioGroup1_2"  class="normwidth" />
               Yes</label>
             <label>
-              <input type="radio" name="thisStreetlight_operational_ynField" value="n" id="RadioGroup1_3" />
+              <input type="radio" name="thisStreetlight_operational_ynField" value="n" id="RadioGroup1_3"  class="normwidth" />
               No</label>
         </div> 
     </div>
@@ -258,10 +270,10 @@
         <div class="fieldtitle"> Public request open (y/n) : </div> 
         <div class="td"> 
         <label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" />
+        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" class="normwidth" />
         Yes</label>
       	<label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" />
+        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" class="normwidth"  />
         No</label>
       </div> 
     </div>

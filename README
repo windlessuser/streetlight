@@ -60,5 +60,6 @@ Updates:
 				-- For testing perposes, you need to create a duplicate table of public_request. I called mine public_request copy.
 					make appropriate changes if your doing your own thing, but I recommend we stick to a convention.
 
-
+20-03-2010 - Valdeck
+			- Ive updated the form and made adjustmentsa to make it more user friendly as well as accurate, hiding some stuff and setting controls to display names instead of ids
   

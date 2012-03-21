@@ -1,8 +1,11 @@
 <style type="text/css">
 
 .tbl {
-	width:450px;
+	width:auto;
 	float:left;
+	margin: 4px;
+	padding: 3px;
+	border:#CCC 1px solid;
 }
 
 .tr {
@@ -13,15 +16,33 @@
 	float:left;
 	width:48%;
 	padding: 2px;
+	white-space:nowrap;
 }
 
 .fieldtitle {
 	font-weight:bold;
 	text-align:right;
 }
+
+.ctr {
+	width:auto;
+	margin: 4px auto;
+	text-align: center;
+}
+
+.clear {
+	clear:both;
+	border-bottom:thin #999 solid;
+}
+
 </style>
 
-
+<form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
+<div class="ctr">
+  	<h2>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value="">  </h2>
+</div>
+</form>
+<div class="clear"></div>
 <form name="public_requestForm" method="POST" action="">
 
 <div class="tbl">
@@ -56,11 +77,7 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Organization type  : </div> </div>
-        <div class="td"> <!--<input type="text" name="thisOrganization_typeidField" size="20" value="">-->
-          <select name="thisOrganization_typeidField" id="thisOrganization_typeidField">
-            <!-- pull from council tbl in db  -->
-            <option value="1">1</option>
-          </select>
+        <div class="td"> <input type="text" name="thisOrganization_typeidField" size="20" value="">
         </div> 
     </div>
     <div class="tr">
@@ -85,41 +102,11 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Remarks : </div> </div>
-        <div class="td"> 
-        	<textarea name="thisRemarksField" wrap="VIRTUAL" cols="25" rows="4">
-            </textarea>  
-        </div> 
+        <div class="td"> <textarea name="thisRemarksField" wrap="VIRTUAL" cols="25" rows="4">  </textarea> </div> 
     </div>
 </div>
 <div class="tbl">
 
-    <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Council  : </div> </div>
-        <div class="td"> <!--<input type="text" name="thisCouncilidField" size="20" value="">-->
-          <select name="thisCouncilidField" id="thisCouncilidField">
-            <!-- pull from council tbl in db  -->
-            <option value="id">name</option>
-          </select>
-        </div> 
-    </div>
-    <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Division  : </div> </div>
-        <div class="td"> <!--<input type="text" name="thisDivisionidField" size="20" value="">-->
-          <select name="thisDivisionidField" >
-            <!-- pull from division tbl in db  -->
-            <option value="id">name</option>
-          </select>
-        </div> 
-    </div>
-    <div class="tr">
-        <div class="td"> <div class="fieldtitle"> District Id : </div> </div>
-        <div class="td"> <!--<input type="text" name="thisDistrictidField" size="20" value="">-->
-          <select name="thisDistrictidField" id="thisDistrictidField">
-            <!-- pull from discrict tbl in db  -->
-            <option value="id">name</option>
-          </select>
-        </div> 
-    </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Street : </div> </div>
         <div class="td"> <input type="text" name="thisStreetField" size="20" value="">  </div> 
@@ -139,6 +126,33 @@
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight no : </div> </div>
         <div class="td"> <input type="text" name="thisStreetlight_noField" size="20" value="">  </div> 
+    </div>
+    <div class="tr">
+        <div class="td"> <div class="fieldtitle"> Council  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisCouncilidField" size="20" value="">-->
+          <select name="thisCouncilidField" id="thisCouncilidField">
+            <!-- pull from council tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
+    </div>
+    <div class="tr">
+        <div class="td"> <div class="fieldtitle"> Division  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisDivisionidField" size="20" value="">-->
+          <select name="thisDivisionidField" >
+            <!-- pull from division tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
+    </div>
+    <div class="tr">
+        <div class="td"> <div class="fieldtitle"> District  : </div> </div>
+        <div class="td"> <!--<input type="text" name="thisDistrictidField" size="20" value="">-->
+          <select name="thisDistrictidField" id="thisDistrictidField">
+            <!-- pull from discrict tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Streetlight operational (y/n) : </div> </div>
@@ -163,7 +177,12 @@
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Public request statusid : </div> </div>
-        <div class="td"> <input type="text" name="thisPublic_request_statusidField" size="20" value="">  </div> 
+        <div class="td"> <!--<input type="text" name="thisPublic_request_statusidField" size="20" value="">-->
+          <select name="thisPublic_request_statusidField" id="thisPublic_request_statusidField">
+            <!-- pull from discrict tbl in db  -->
+            <option value="id">name</option>
+          </select>
+        </div> 
     </div>
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Public request open (y/n) : </div> </div>
@@ -176,10 +195,10 @@
         No</label>
       </div> 
     </div>
-    <div class="tr">
+    <!--<div class="tr">
         <div class="td"> <div class="fieldtitle"> User Id : </div> </div>
         <div class="td"> <input type="text" name="thisUseridField" size="20" value="">  </div> 
-    </div>
+    </div>-->
     <div class="tr">
         <div class="td"> <div class="fieldtitle"> Longitude : </div> </div>
         <div class="td"> <input type="text" name="thisLongitudeField" size="20" value="">  </div> 
@@ -202,8 +221,9 @@
     </div>
 -->
 </div>
-
-<input type="submit" name="submitEnterPublic_requestForm" value="Enter Public_request">
-<input type="reset" name="resetForm" value="Clear Form">
-
+<div class="clear"></div>
+<div class="ctr">
+    <input type="submit" name="submitEnterPublic_requestForm" value="Submit your report">
+    <input type="reset" name="resetForm" value="Clear Form">
+</div>
 </form>

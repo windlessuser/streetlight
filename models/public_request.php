@@ -17,7 +17,7 @@ class Public_Request extends ActiveRecord\Model
     static $table_name = 'public_request'; //explicit table name
 	static $primay_key = 'public_requestid'; //explicit primary key
 	
-	function generate_Reference()
+	 public function generate_Reference()
 	{
 		$currentDateTime = getdate();
 		$year = substr($currentDateTime['year'],-2);
@@ -61,7 +61,7 @@ class Public_Request extends ActiveRecord\Model
 	}
 	
 	
-	function retrieve_PublicRequestbyReference($referenceNo)
+	 public function retrieve_PublicRequestbyReference($referenceNo)
 	{
 		try
 			{
@@ -73,7 +73,7 @@ class Public_Request extends ActiveRecord\Model
 		return $requestInfo;
 	}
 	
-	function retrieve_UserRequests($userId)
+	public function retrieve_UserRequests($userId)
 	{
 		try
 			{

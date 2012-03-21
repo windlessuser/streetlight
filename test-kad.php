@@ -1,7 +1,11 @@
 <?php
 require 'models/public_request.php';
 
-$reference =  Public_Request::generate_Reference();
+//$reference =  Public_Request::generate_Reference();
 
-echo $reference;
+$posts  = District::retrieve_DistrictsForCombo();
+
+foreach ($posts as $post)
+   echo $post->district."</br>";
+
 ?>

@@ -61,7 +61,7 @@
 	float:left;
 	margin: 4px;
 	padding: 3px;
-	border:#CCC 1px solid;
+	/*border:#CCC 1px solid;*/
 }
 
 .tr {
@@ -106,16 +106,21 @@ input {
 textarea {
 	width:200px;
 }
-.normwidth{
+
+.normwidth {
 	width:auto;
+}
+
+form {
+	border:#CCC 1px solid;
 }
 
 </style>
 
 <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
-<div class="!ctr">
-  	<h3>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
-    <input type="submit" value="Submit" class="normwidth" /> </h3>
+<div class="ctr">
+  	<strong>Enter Streetlight # to be reported  : <input type="text" name="thisStreetlight_noField" size="5" value="" class="normwidth"> 
+    <input type="submit" value="Submit" class="normwidth" /> </strong>
     
 </div>
 </form>

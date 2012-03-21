@@ -1,7 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+<title>interior_template_blue</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+	<meta name="title" content="" />
+	
+	<meta name="description" content="" />
+	
+	<meta name="keywords" content="" />
+	
+	<link type="text/css" rel="stylesheet" href="styles/reset/reset.css" />
+	<link type="text/css" rel="stylesheet" href="styles/fonts/fonts.css" />
+	<link type="text/css" rel="stylesheet" href="styles/grids/grids.css" />
+	<link type="text/css" rel="stylesheet" href="styles/interior_default.css" />
+	
+    <link type="text/css" rel="stylesheet" href="../styles/interior_blue.css" />
+</head>
+
+<body id="yahoo-com">
+
+<div id="doc" class="yui-t1">
+
+
+	<div id="hd">
+
+		<!-- begin GOJ banner -->
+		<div id="banner">
+			<div id="branchCrest"><a href="#" title="Ministry of X"><img src="images/banner-crest.jpg" alt="Ministry of X" width="380" height="50" /></a></div>
+			<div id="goJamaicaLogo">Government of Jamaica</div>
+		</div>
+
+		<div id="gojHeader">
+			<ul class="listNav floatLeft">
+				<li><a href="/" title="Home">Home</a>&nbsp;&nbsp;|</li>
+				<li><a href="#" title="About Us">About Us</a>&nbsp;&nbsp;|</li>
+				<li class="last"><a href="#" title="Contact Us">Contact Us</a></li>
+			</ul>
+			<ul class="listNav floatRight" style="margin-bottom: 0;">
+				<li><a href="#" title="Search the Government of Jamaica Main Site">Search</a>&nbsp;&nbsp;|</li>
+				<li class="last"><a href="http://jamaica.gov.jm/" title="Government of Jamaica Main Site">jamaica.gov.jm</a></li>
+			</ul>
+		</div>
+		<!-- end GOJ banner -->
+	</div>
+
+
+	<div id="bd">
+		<div id="yui-main">
+			<div class="yui-b">
+				<div class="yui-gc"><img src="images/interior_top_blue.jpg" width="580" height="32" alt="" />
+				    <div class="main_text">
+				        <h1>Street Light Malfunction Reporter</h1>
 <style type="text/css">
 
 .tbl {
-	width:auto;
+	width:95%;
 	float:left;
 	margin: 4px;
 	padding: 3px;
@@ -241,3 +297,41 @@
     <input type="reset" name="resetForm" value="Clear Form">
 </div>
 </form>
+				      <!-- Begin Left Column -->
+		</div>
+				</div></div>
+		</div>
+        
+        <div class="yui-b">
+          <div class="left_column">
+                <div class="section_title">Pellentesque
+                      Portor</div>
+                <ul>
+                  
+                <li><a href="#">Luctus
+                            metus</a></li>
+                      </ul>
+                <br />
+          </div>
+		</div>
+        <!-- End Left Column -->
+	</div>
+
+
+	<div id="ft">
+
+		<div id="gojFooter">
+			<ul class="listNav floatLeft">
+				<li><a href="#" title="Important Notices">Important Notices</a>&nbsp;&nbsp;|</li>
+				<li><a href="#" title="Help">Help</a>&nbsp;&nbsp;|</li>
+				<li>&copy; 2007, Government of Jamaica. All Rights Reserved</li>
+			</ul>
+			<ul class="listNav floatRight" style="margin-bottom: 0;">
+				<li>Last modified: June 7,
+		        2007</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <style type="text/css">
 
 .tbl {
-	width:45%;
+	width:auto;
 	float:left;
 	margin: 4px;
 	padding: 3px;
@@ -38,16 +38,16 @@
 }
 
 #userdata {
-	width:300px;
-	border:hidden;
+	min-width:300px;
 	float:left;
-	margin-right: 10px;
+	border:none;
+	margin-right:14px;
 }
 </style>
 
 <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
 <div class="!ctr">
-  	<h2>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value=""> <input name="" type="submit" value=">>" /> </h2>
+  	<h3>Enter Streetlight # : <input type="text" name="thisStreetlight_noField" size="5" value=""> <input type="submit" value="Submit" /> </h3>
     
 </div>
 </form>
@@ -73,7 +73,8 @@
     </div>
     <div class="tr">
         <div class="fieldtitle"> Address : </div> 
-        <div class="td"> <input type="text" name="thisAddressField" size="23" value="">
+        <div class="td">
+          <textarea name="thisAddressField" cols="19" rows="4"></textarea>
         </div> 
     </div>
     <div class="tr">
@@ -107,7 +108,7 @@
     </div>
     <div class="tr">
         <div class="fieldtitle"> Remarks : </div> 
-        <div class="td"> <textarea name="thisRemarksField" wrap="VIRTUAL" cols="18" rows="4" >  </textarea></div> 
+        <div class="td"> <textarea name="thisRemarksField" wrap="VIRTUAL" cols="19" rows="4" >  </textarea></div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> </div> 

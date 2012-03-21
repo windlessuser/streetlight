@@ -32,6 +32,4 @@ ActiveRecord\Config::initialize(function($cfg)
 	}	
 }
 
-$usr = new User;
-	print_r($usr->retrieve_UserInfo("4"));
 ?>

@@ -16,6 +16,17 @@ ActiveRecord\Config::initialize(function($cfg)
     static $primary_key = 'divisionid';
 	protected $userId; 
 	static $has_many = array(array('streetlight'));
+	
+	public function retrieve_DivisionsForCombo()
+	{ 
+		try{
+			$results =& parent::all();
+		}
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$results = array();
+		 }	
+		return $results;
+	}
 
 }
 ?>

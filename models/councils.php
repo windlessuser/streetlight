@@ -19,5 +19,15 @@ ActiveRecord\Config::initialize(function($cfg)
       array('streetlight')
     );
 
+	public function retrieve_CouncilsForCombo()
+	{ 
+		try{
+			$councils =& parent::all();
+		}
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$councils = array();
+		 }	
+		return $councils;
+	}
 }
 ?>

@@ -16,6 +16,18 @@ ActiveRecord\Config::initialize(function($cfg)
     static $primary_key = 'districtid';
 	protected $userId; 
 	static $has_many = array(array('streetlight'));
+	
+	
+	public function retrieve_DistrictsForCombo()
+	{ 
+		try{
+			$results =& parent::all();
+		}
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$results = array();
+		 }	
+		return $results;
+	}
 
 }
 ?>

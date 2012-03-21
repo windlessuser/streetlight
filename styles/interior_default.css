@@ -1,0 +1,299 @@
+/*--- common --*/
+
+h1 {
+    margin: 10px 0;
+    font-size: 160%;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 128%;
+}
+
+strong { font-weight: bold; }
+
+.floatLeft { float: left; }
+.floatRight { float: right; }
+
+/*--- banner ---*/
+
+div#banner {
+	text-indent: -9999px;
+	width:100%;
+	height:50px;
+	margin:0;
+	padding:0;
+	background: url(../images/banner-bg.gif);
+}
+div#branchCrest {
+	height:50px;
+	float:left;
+	text-indent: 0;
+}
+div#branchCrest img {
+	border: none;
+}
+div#goJamaicaLogo {
+	width: 181px;
+	height: 50px;
+	float: right;
+	background: url(../images/banner-gojamaica.jpg) no-repeat;
+}
+
+
+
+/*--- header & footer ---*/
+
+div#gojHeader {
+	width:100%;
+	height:23px;
+	he\ight:20px;
+	margin:0;
+	font-weight:400;	
+	border-bottom: 3px solid #333;
+	padding-top: 5px;
+    font-family: arial,helvetica,sans-serif !important;
+}
+
+div#gojFooter {
+	width:100%;
+	height:23px;
+	he\ight:20px;
+	margin: 10px 0 0 0;
+	font-weight:400;	
+	border-top: 3px solid #333;
+	padding-top: 5px;
+	margin-bottom: 20px;
+    font-family: arial,helvetica,sans-serif !important;
+}
+
+
+/*--- list nav ---*/
+
+ul.listNav {
+	list-style: none;
+	margin: 0;
+	padding: 0 10px 0 10px;
+}
+
+ul.listNav li {
+	display:inline;
+	list-style: none;
+	margin: 0;
+	padding-right: 4px;
+	color: white;	
+	font-size: 92% !important;
+}
+
+ul.listNav li a {
+	color: white;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+ul.listNav li a:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+/* Interior page, main text */
+div.main_text p {
+    margin-bottom: 15px;
+}
+
+div.main_text {
+    padding: 10px 20px;
+}
+
+div.main_text div.image_thumb {
+    float: right;    
+    margin: 0 0 15px 15px;    
+}
+
+div.main_text div.image_caption {
+    padding: 5px 10px;
+}
+
+div.main_text ul {
+    margin: 15px;
+}
+
+div.main_text li {
+    margin: 5px 20px;
+    padding: 0;
+    list-style: circle;
+    background: transparent;
+    font-size: 13px;
+	color: #000000;
+}
+
+/* Very center, main page title */
+div.center_content_title {
+    padding: 10px 0;
+    font-size: 136%;
+}
+
+/* Right column */
+div.right_column {
+     padding: 5px 14px;
+    *padding: 10px 11px;   
+}
+
+    div.right_column div.right_column_title {        
+        font-weight: bold;
+    }
+
+    div.right_column div.right_column_item {
+        margin: 5px 0 10px 0;   
+        padding-bottom: 10px;
+        *padding-left: 4px;
+        background: url(../images/dotted_line.gif) repeat-x bottom;
+        font-size: 82%;
+    }   
+
+/* Left column */
+.yui-b div.left_column {    
+    width: 169px !important;    
+}       
+    
+.yui-b .section_title {
+    height: 33px;
+    line-height: 33px;
+    padding: 0 0 0 10px;    
+    font-size: 114%;
+    font-weight: bold;
+}
+
+.yui-b li {
+    margin: 0 5px;
+    padding: 5px 0 5px 5px;
+    list-style: square inside !important;    
+    background: url(../images/dotted_line.gif) repeat-x bottom;
+    font-size: 82%;
+}
+    
+/* News section */
+    div.news div.news_header {
+        height:23px;
+        he\ight:20px;
+	    margin:20px 0;
+        padding: 0 10px;
+	    font-weight:400;
+        border-bottom: 3px solid #333;	    	    
+	    padding-top: 5px;           
+    }
+    
+    div.news div.news_item {
+        margin: 10px 15px;   
+        padding-bottom: 20px;
+        background: url(../images/dotted_line.gif) repeat-x bottom;	
+        font-size: 82%;
+    }    
+    
+    div.news div.news_item img {
+        margin: 0 10px 10px 0;             
+    }    
+    
+/* Push the main body over in FF */
+.yui-gc {
+    margin-left: -4px !important;
+    *margin-left: 0 !important;
+}
+
+/*********************************************************************************
+
+	This is the default grey style for when the user is Editing in Contribute
+
+**********************************************************************************/
+
+/*--- header & footer ---*/
+
+div#gojHeader {
+	background: #888;
+}
+
+div#gojFooter {
+	background: #888;
+}
+
+/* Very center, main page title */
+div.center_content_title { 
+    color: #336699;
+}
+
+#yui-main {
+    background: #fff;
+}
+
+/*html>body #bd {
+	margin-right: -330px;
+}*/
+
+/* Right column */
+    div.right_column div.right_column_title {
+        color: #166102;
+    }
+    
+    div.right_column div.right_column_item a,
+    div.right_column div.right_column_item a:link,
+    div.right_column div.right_column_item a:visited {
+        color: #ff9900;
+        text-decoration: none;        
+    }
+    
+    div.right_column div.right_column_item a:hover {
+        color: #ff9900;
+        text-decoration: underline;        
+    }
+
+/* Left column */
+.yui-b div.left_column {    
+    background: #f4f4f4 url(../images/sidenav_bg_grey.gif) repeat-x bottom;    
+}       
+    
+.yui-b .section_title {
+    background: url(../images/nav-heading-bg.jpg) repeat-x;
+    color: #083a6c;
+}
+
+.yui-b li {    
+    color: orange;
+}
+
+    .yui-b li a,
+    .yui-b li a:link,
+    .yui-b li a:visited {        
+        color: #000;
+        text-decoration: none;
+    }
+    
+    .yui-b li a:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+/* News section */
+div.news {
+    background: url(../images/news-bg-blue.jpg) repeat-x top;
+}
+
+    div.news div.news_header {
+	    background: #888;
+        color: #fff;        
+    }    
+    
+    div.news div.news_item img {     
+        border: solid #fff 1px;        
+    }
+    
+    div.news div.news_item a,
+    div.news div.news_item a:link,
+    div.news div.news_item a:visited {
+        color: #ff9900;
+        text-decoration: none;        
+    }
+    
+    div.news div.news_item a:hover {
+        color: #ff9900;
+        text-decoration: underline;        
+    }

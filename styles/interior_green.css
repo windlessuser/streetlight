@@ -1,0 +1,106 @@
+/*--- common --*/
+
+h1 {
+    color: #006600;
+}
+
+h2 {
+    color: #006600;
+}
+
+div.main_text a,
+div.main_text a:link,
+div.main_text a:visited {
+    color: #996600;
+    text-decoration: none;        
+}
+    
+div.main_text a:hover {
+    color: #996600;
+    text-decoration: underline;
+}
+
+/*--- header & footer ---*/
+
+div#gojHeader {	
+	background: #29857a;
+}
+
+div#gojFooter {
+	background: #29857a;
+}
+
+/* Interior page, main text */
+div.main_text li {
+    color: #996600;
+}
+
+/* Interior page, main text */
+div.main_text div.image_thumb {
+    background: #eee;
+}
+
+div.main_text li a,
+div.main_text li a:link,
+div.main_text li a:visited {    
+    color: #996600;
+    text-decoration: none;
+}
+
+div.main_text li a:hover {    
+    color: #996600;
+    text-decoration: none;
+}
+
+/* Left column */
+.yui-b div.left_column {   
+    background: #8fe992 url(../images/sidenav_bg_green.gif) repeat-x bottom;
+}         
+    
+.yui-b .section_title {    
+    background: url(../images/nav-heading-bg-yellow.gif) repeat-x top;    
+    color: #000;
+}
+
+.yui-b li {    
+    color: yellow;
+}
+
+    .yui-b li a,
+    .yui-b li a:link,
+    .yui-b li a:visited {        
+        color: #000;
+        text-decoration: none;
+    }
+    
+    .yui-b li a:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+/* News section */
+div.news {
+    background: url(../images/news-bg-yellow.jpg) repeat-x top;
+}
+
+    div.news div.news_header {
+        background: #336699;
+        color: #fff;        
+        background: url(../images/news-heading-bg-green.jpg) repeat-x top;
+    }    
+    
+    div.news div.news_item img {     
+        border: solid #fff 1px;        
+    }
+    
+    div.news div.news_item a,
+    div.news div.news_item a:link,
+    div.news div.news_item a:visited {
+        color: #996600;
+        text-decoration: none;        
+    }
+    
+    div.news div.news_item a:hover {
+        color: #996600;
+        text-decoration: underline;        
+    }    

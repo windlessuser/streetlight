@@ -1,5 +1,5 @@
 <?php
-require '../models/Public_Request2.php';
+require '../models/Public_Request.php';
 
 $requests =& Public_Request::find_all_by_public_request_statusid(1);
 

@@ -1,5 +1,5 @@
 <?php
-require '../models/Public_Request3.php';
+require '../models/foreign_db.php';
 
 /*
 * This file retrives the created json array created in public_requests_json and uses it to syncronises the other database.

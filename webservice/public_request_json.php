@@ -6,7 +6,7 @@
 * date: 20/03/2010
 */
 
-require '../models/Public_Request2.php';
+require '../models/Public_Request.php';
 
 try{
 	$requests =& Public_Request::find_all_by_public_request_statusid(1);

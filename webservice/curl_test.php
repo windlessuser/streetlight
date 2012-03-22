@@ -1,5 +1,6 @@
 <?php
 require '../models/foreign_db.php';
+require '../models/mail_wrapper.php';
 
 /*
 * This file retrives the created json array created in public_requests_json and uses it to syncronises the other database.
@@ -17,7 +18,7 @@ curl_close($ch);
 
 //Decode the Json object back to a php array.
 $public_requests =& json_decode($raw_request);
-$public_request = new Public_Request; //Database model
+$public_request = new Foreign_db; //Database model
 $total_requests = count((array)$public_requests);
 $successful_updates = 0;
 $successful_creates = 0;
@@ -40,6 +41,13 @@ foreach($public_requests as $request){
 		$public_request->reload();
 	}
 }
-
-echo "Synchronisation complete:From a total of $total_requests records, $successful_updates were updated and $successful_creates created.";
+$mr = new Mail_Wrapper;
+foreach($parent_request->get_report_list() as $contact){
+	$config = array( 'to' => $contact->email,
+					 'subject' => 'URGENT!!! Defective streelight reported!',
+					 'body' => "There has been a report of a defective streetlight in the district of $contact->district in the  @$contact->division, $contact->council"
+					);
+	if(!$mr->send($config)) echo 'Error sending email to ' . $contact->email;
+}
+echo "Synchronisation complete: From a total of $total_requests records, $successful_updates were updated and $successful_creates created.";
 ?>

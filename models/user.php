@@ -21,7 +21,7 @@ ActiveRecord\Config::initialize(function($cfg)
 		try
 		{
 			$orgTypeJoin = 'LEFT OUTER JOIN organization_type ON users.organization_typeid = organization_type.organization_typeid';
-			$sel = '*,organization_type.organization_type AS organizationType';
+			$sel = '*,organization_type.organization_type';
 		
 			$userInfo =& parent::find($userId,array('joins' => array($orgTypeJoin),'select'=>$sel));
 		}

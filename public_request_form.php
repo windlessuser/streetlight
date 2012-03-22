@@ -7,6 +7,38 @@ $_SESSION['SESSION_STATUS']=1;
 $_SESSION['SESSION_USER_NAME']='mgordon';
 $_SESSION['SESSION_USER_ID']=1;
 
+$disabled = 'disabled = "disabled"';
+$councilDropDown = '';
+$divisionDropDown = '';
+$districtDropDown = '';
+$schemesDropDown = '';
+$defectDropDown = '';
+$statusDropDown = '';
+$parishDropDown = '';
+$organisationTypeDropDown = '';
+
+$requestOpenCheckedYes ="CHECKED";
+$requestOpenCheckedNo ="";
+
+$parishId= 0;
+$councilsid = 0;
+$userId = $_SESSION['SESSION_USER_ID'];
+
+$userInfo = User::retrieve_UserInfo($userId);
+try {$parishId = $userInfo->parishid; }catch(ActiveRecord\RecordNotFound $rnf) {$parishId = 0;}
+try {$councilsid = $userInfo->councilid; }catch(ActiveRecord\RecordNotFound $rnf) {$councilsid = 0;}
+
+$parishes = Parish::retrieve_ParishesForCombo();
+$defects = Streetlight_Defect::retrieve_DefectsForCombo();
+$orgTypes = Organization_Type::retrieve_TypesForCombo();
+$status = Public_Request_Status::retrieve_StatusForCombo();
+$schemes = Scheme::retrieve_SchemesForCombo();
+
+$councilvalues =  Councils::retrieve_CouncilsForComboByParish($parishId);
+$divisionvalues = Division::retrieve_DivisionsForComboByCouncilId($councilsid);
+$districtvalues = District::retrieve_DistrictsForComboByCouncilId($councilsid);
+
+
 $requestDate='';
 $firstName='';
 $lastName = '';
@@ -39,17 +71,38 @@ $OfficialComments='';
 
 if (isset($_POST['Streetlight_Submit']))
 {
+	
+	GLOBAL $councilDropDown;
+	GLOBAL $divisionDropDown;
+	GLOBAL $districtDropDown;
+	
 	$streetlightNo = $_POST['thisStreetlight_noField'];
 	$userId = $_SESSION['SESSION_USER_ID'];
+	$parishId = 0;
+	$councilsid =0;
 	
 	$streetlightInfo = Streetlight::retrieve_StreetlightInfo($streetlightNo);
 	$userInfo = User::retrieve_UserInfo($userId);
 	$referenceNo = Public_Request::generate_Reference();
 	
-	//echo $userInfo->organizationType;
+	try {$parishId = $userInfo->parishid; }catch(ActiveRecord\RecordNotFound $rnf) {$parishId = 0;}
+	try {$councilsid = $userInfo->councilid; }catch(ActiveRecord\RecordNotFound $rnf) {$councilsid = 0;}
+		
+	$councilvalues =  Councils::retrieve_CouncilsForComboByParish($parishId);
+	$divisionvalues = Division::retrieve_DivisionsForComboByCouncilId($councilsid);
+	$districtvalues = District::retrieve_DistrictsForComboByCouncilId($councilsid);
+	
+	//trying to generate a string to populate the dropdown. not sure why its not working
+	if (count($councilvalues) > 0) 	  
+	{
+      foreach($councilvalues as $councils)
+	  {
+		//echo $councils->council;
+		//$councilDropDown .=  '<option> '. $council->council .' </option>'; 
+      }
+	}
 
 	$currentDateTime = getdate();
-	//$year = substr($currentDateTime['year'],-2);
 	$year = $currentDateTime['year'];
 	$month = $currentDateTime['month'];
 	$day = $currentDateTime['mday'];
@@ -87,23 +140,23 @@ if (isset($_POST['Streetlight_Submit']))
 	GLOBAL $OfficialComments;
 	
 	$requestDate=$currentDate;
-	$firstName= $userInfo->firstname;
+	$firstName= $userInfo->firstname; 
 	$lastName = $userInfo->surname;
-	$address = '';
+	$address = $userInfo->address;
 	$organisation = $userInfo->organization_name;
-	$organizationType = '';
-	$phone = '';
-	$cell='';
-	$fax='';
-	$email='';
-	$website='';
-	$remarks='';
+	$organizationType = $userInfo->organization_type;
+	$phone = $userInfo->phone1;
+	$cell=$userInfo->cell;
+	$fax= $userInfo->fax;
+	$email=$userInfo->email;
+	$website=$userInfo->web;
+	$remarks=$userInfo->remarks;
 	$reference = $referenceNo;
 	$street= $streetlightInfo->street;
-	$strtLightLocation = '';
+	$strtLightLocation = $streetlightInfo->streetlight_location;
 	$strtLightName = '';
 	$scheme = '';
-	$streetlightNo = '';
+	$streetlightNo = $streetlightInfo->streetlight_no;
 	$council='';
 	$division = '';
 	$district = '';
@@ -115,7 +168,6 @@ if (isset($_POST['Streetlight_Submit']))
 	$longtitude = '';
 	$latitude = '';
 	$OfficialComments='';
-
 }
 
 ?>
@@ -254,10 +306,11 @@ form {
 <form name="public_requestForm" method="POST" action="">
 
 <div class="tbl" id="userdata">
-    <!--<div class="tr">
-        <div class="td"> <div class="fieldtitle"> Public Request Id : </div> 
-        <div class="td"> <input type="text" name="thisPublic_requestidField" size="20" value="">  </div> 
-    </div>-->
+	
+	<div class="tr">
+        <div class="fieldtitle"> Reference no : </div> 
+        <div class="td"> <input name="thisReference_noField" type="text" value="<?php echo $reference; ?>" size="23" readonly="readonly">  </div> 
+    </div>
     <div class="tr">
         <div class="fieldtitle"> Request date : </div> 
         <div class="td"> <input type="text" name="thisRequest_dateField" size="23" value="<?php echo $requestDate; ?>" /> </div> 
@@ -269,55 +322,70 @@ form {
     <div class="tr">
         <div class="fieldtitle"> Last name : </div> 
         <div class="td"> <input type="text" name="thisLastnameField" size="23" value="<?php echo $lastName?>">  </div> 
-    </div>
+    </div
+	
     <div class="tr">
         <div class="fieldtitle"> Address : </div> 
         <div class="td">
-          <textarea name="thisAddressField" cols="19" rows="4"></textarea>
+          <textarea name="thisAddressField" cols="19" rows="4">
+		  <?php echo trim($address); ?>
+		  </textarea>
         </div> 
     </div>
+	
+		<div class="tr">
+        <div class="fieldtitle"> Parish : </div> 
+        <div class="td">
+          <select name ="parishSelect" style="min-width:100px;">
+			<?php echo $parishDropDown;?>
+			</Select>
+        </div> 
+    </div>
+	
+	  <div class="tr">
+        <div class="fieldtitle"> Organization Type  : </div> 
+        <div class="td"> 
+			<select name ="organisationTypeSelect" style="min-width:100px;">
+				<?php echo $organisationTypeDropDown;?>
+			</Select>
+        </div> 
+    </div>
+	
     <div class="tr">
         <div class="fieldtitle"> Organization : </div> 
         <div class="td"> <input type="text" name="thisOrganizationField" size="23" value="<?php echo $organisation; ?>">  </div> 
     </div>
-    <div class="tr">
-        <div class="fieldtitle"> Organization type  : </div> 
-        <div class="td"> <input type="text" name="thisOrganization_typeidField" size="23" value="<?php echo $organizationType; ?>">
-        </div> 
-    </div>
+  
     <div class="tr">
         <div class="fieldtitle"> Phone : </div> 
-        <div class="td"> <input type="text" name="thisPhoneField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisPhoneField" size="23" value="<?php echo $phone; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Cell : </div> 
-        <div class="td"> <input type="text" name="thisCellField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisCellField" size="23" value="<?php echo $cell; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Fax : </div> 
-        <div class="td"> <input type="text" name="thisFaxField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisFaxField" size="23" value="<?php echo $fax; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Email : </div> 
-        <div class="td"> <input type="text" name="thisEmailField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisEmailField" size="23" value="<?php echo $email; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Website : </div> 
-        <div class="td"> <input type="text" name="thisWebsiteField" size="23" value="">  </div> 
+        <div class="td"> <input type="text" name="thisWebsiteField" size="23" value="<?php echo $website; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Remarks : </div> 
-        <div class="td"> <textarea name="thisRemarksField" wrap="VIRTUAL" cols="19" rows="4" >  </textarea></div> 
+        <div class="td"> 
+		<textarea name="thisRemarksField" wrap="VIRTUAL" cols="19" rows="4" >  
+		<?php echo $remarks; ?>
+		</textarea></div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> </div> 
         <div class="td"></div> 
-    </div>
-</div>
-<div class="tbl">
-    <div class="tr">
-        <div class="fieldtitle"> Reference no : </div> 
-        <div class="td"> <input name="thisReference_noField" type="text" value="<?php echo $reference; ?>" size="23" readonly="readonly">  </div> 
     </div>
 
     <div class="tr">
@@ -326,7 +394,11 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Streetlight location : </div> 
-        <div class="td"> <input type="text" name="thisStreetlight_locationField" size="20" value="">  </div> 
+        <div class="td">
+			<textarea name="thisStrtLocationField" cols="19" rows="4">
+			  <?php echo trim($strtLightLocation); ?>
+			</textarea>
+		</div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Streetlight name : </div> 
@@ -334,37 +406,40 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Scheme : </div> 
-        <div class="td"> <input type="text" name="thisSchemeField" size="20" value="">  </div> 
+        <div class="td">
+			<select name ="schemeSelect" style="min-width:100px;">
+				<?php echo $schemeDropDown;?>
+			</Select>
+		</div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Streetlight no : </div> 
-        <div class="td"> <input type="text" name="thisStreetlight_noField" size="20" value="">  </div> 
+        <div class="td"> <input type="text" name="thisStreetlight_noField" size="20" value="<?php echo $streetlightNo; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Council  : </div> 
         <div class="td"> 
         	<!-- space for the id hidden -->
-        	<input type="hidden" name="thisCouncilidField" size="20" value="">
         	<!-- space for the name based on the  id -->
-        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly"/>
+			<select name ="councilSelect" style="min-width:100px;">
+			<?php echo $councilDropDown;?>
+			</Select>
        </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Division  : </div> 
         <div class="td">
-        	<!-- space for the id hidden -->
-            <input type="hidden" name="thisDivisionidField" size="20" value="">
-        	<!-- space for the name based on the  id -->
-        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
+        	<select name ="divisionSelect" style="min-width:100px;">
+			<?php echo $divisionDropDown;?>
+			</Select>
         </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> District  : </div> 
         <div class="td"> 
-        	<!-- space for the id hidden -->
-        	<input type="hidden" name="thisDistrictidField" size="20" value="">
-        	<!-- space for the name based on the  id -->
-        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
+			<select name ="districtSelect" style="min-width:100px;">
+			<?php echo $districtDropDown;?>
+			</Select>
         </div> 
     </div>
     <div class="tr">
@@ -379,39 +454,36 @@ form {
         </div> 
     </div>
     <div class="tr">
-        <div class="fieldtitle"> Streetlight defect typeid : </div> 
+        <div class="fieldtitle"> Defect type : </div> 
         <div class="td"> 
-        	<input type="text" name="thisStreetlight_defect_typeidField" size="20" value="">  
+        	<select name ="defectSelect" style="min-width:100px;">
+			<?php echo $defectDropDown;?>
+			</Select>
         </div> 
     </div>
     <div class="tr">
-        <div class="fieldtitle"> Streetlight defect type remarks : </div> 
+        <div class="fieldtitle"> Defect remarks : </div> 
         <div class="td"> <textarea name="thisStreetlight_defect_type_remarksField" wrap="VIRTUAL" cols="25" rows="4"></textarea>  </div> 
     </div>
     <div class="tr">
-        <div class="fieldtitle"> Public request status : </div> 
+        <div class="fieldtitle"> Status : </div> 
         <div class="td"> 
-        	<!-- space for the id hidden -->
-            <input type="hidden" name="thisPublic_request_statusidField" size="20" value="">
-        	<!-- space for the name based on the  id -->
-        	<input type="text" name="" size="20" value="<?php echo '' ?>" readonly="readonly">
+        	<select name ="statusSelect" style="min-width:100px;">
+			<?php echo $statusDropDown;?>
+			</Select>
         </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Public request open (y/n) : </div> 
         <div class="td"> 
         <label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" class="normwidth" />
+        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" class="normwidth" <?php echo $requestOpenCheckedYes; ?>/>
         Yes</label>
       	<label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" class="normwidth"  />
+        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" class="normwidth" <?php echo $requestOpenCheckedNo; ?> />
         No</label>
       </div> 
     </div>
-    <!--<div class="tr">
-        <div class="fieldtitle"> User Id : </div> 
-        <div class="td"> <input type="text" name="thisUseridField" size="20" value="">  </div> 
-    </div>-->
     <div class="tr">
         <div class="fieldtitle"> Longitude : </div> 
         <div class="td"> <input type="text" name="thisLongitudeField" size="20" value="">  </div> 
@@ -422,17 +494,8 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Official comments : </div> 
-        <div class="td"> <textarea name="thisOfficial_commentsField" wrap="VIRTUAL" cols="20" rows="4"></textarea>  </div> 
+        <div class="td"> <textarea name="thisOfficial_commentsField" wrap="VIRTUAL" cols="20" rows="4" <?php echo $disabled; ?>></textarea>  </div> 
     </div>
-<!--    <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Create date : </div> 
-        <div class="td"> <input type="text" name="thisCreate_dateField" size="20" value="">  </div> 
-    </div>
-    <div class="tr">
-        <div class="td"> <div class="fieldtitle"> Update date : </div> 
-        <div class="td"> <input type="text" name="thisUpdate_dateField" size="20" value="">  </div> 
-    </div>
--->
 </div>
 <div class="clear"></div>
 <div class="ctr">

@@ -10,29 +10,17 @@ ActiveRecord\Config::initialize(function($cfg)
 		//'development' => 'mysql://username:password@localhost/database_name'));
  });
  
- class District extends ActiveRecord\Model
+ class Streetlight_Defect extends ActiveRecord\Model
 {
-	static $table_name = 'district';
-    static $primary_key = 'districtid';
+	static $table_name = 'streetlight_defect';
+    static $primary_key = 'streetlight_defectid';
 	protected $userId; 
 	static $has_many = array(array('streetlight'));
 	
-	
-	public function retrieve_DistrictsForCombo()
+	public function retrieve_DefectsForCombo()
 	{ 
 		try{
 			$results =& parent::all();
-		}
-		 catch(ActiveRecord\RecordNotFound $rnf){
-			$results = array();
-		 }	
-		return $results;
-	}
-	
-	public function retrieve_DistrictsForComboByCouncilId($councilId)
-	{ 
-		try{
-			$results =& parent::find_by_councilid($councilId);
 		}
 		 catch(ActiveRecord\RecordNotFound $rnf){
 			$results = array();

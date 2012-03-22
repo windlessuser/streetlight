@@ -27,6 +27,17 @@ ActiveRecord\Config::initialize(function($cfg)
 		 }	
 		return $results;
 	}
+	
+	public function retrieve_DivisionsForComboByCouncilId($councilId)
+	{ 
+		try{
+			$results =& parent::find_by_councilid($councilId);
+		}
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$results = array();
+		 }	
+		return $results;
+	}
 
 }
 ?>

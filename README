@@ -67,3 +67,9 @@ Updates:
 			- The request form partially works at the moment. If you enter a streetlight number it will populate some of the fields on the form but not all.
 			- I paused awaiting an email response on a few queries.
 			-If you connect it to your local database the changes should be seen.
+			
+22-03-2012 -Kadeem
+			- please use my updated database streetlight. I added more changes. The retrieve works. I am having an issue with the dropdown  but not anything 
+			big. The save routine will not take much time to be completed.
+			
+			

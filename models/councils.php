@@ -29,5 +29,16 @@ ActiveRecord\Config::initialize(function($cfg)
 		 }	
 		return $councils;
 	}
+	
+	public function retrieve_CouncilsForComboByParish($parishId)
+	{ 
+		try{
+			$councils =& parent::find_by_parishid($parishId);
+		}
+		 catch(ActiveRecord\RecordNotFound $rnf){
+			$councils = array();
+		 }	
+		return $councils;
+	}
 }
 ?>

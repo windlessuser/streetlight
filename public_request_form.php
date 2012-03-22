@@ -20,8 +20,6 @@ $organisationTypeDropDown = '';
 $requestOpenCheckedYes ="CHECKED";
 $requestOpenCheckedNo ="";
 
-
-
 $parishId= 0;
 $councilsid = 0;
 $userId = $_SESSION['SESSION_USER_ID'];
@@ -99,7 +97,7 @@ if (isset($_POST['Streetlight_Submit']))
 	{
       foreach($councilvalues as $councils)
 	  {
-		echo $councils->council;
+		//echo $councils->council;
 		//$councilDropDown .=  '<option> '. $council->council .' </option>'; 
       }
 	}

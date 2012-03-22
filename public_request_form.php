@@ -156,7 +156,7 @@ if (isset($_POST['Streetlight_Submit']))
 	$strtLightLocation = $streetlightInfo->streetlight_location;
 	$strtLightName = '';
 	$scheme = '';
-	$streetlightNo = '';
+	$streetlightNo = $streetlightInfo->streetlight_no;
 	$council='';
 	$division = '';
 	$district = '';
@@ -414,7 +414,7 @@ form {
     </div>
     <div class="tr">
         <div class="fieldtitle"> Streetlight no : </div> 
-        <div class="td"> <input type="text" name="thisStreetlight_noField" size="20" value="">  </div> 
+        <div class="td"> <input type="text" name="thisStreetlight_noField" size="20" value="<?php echo $streetlightNo; ?>">  </div> 
     </div>
     <div class="tr">
         <div class="fieldtitle"> Council  : </div> 

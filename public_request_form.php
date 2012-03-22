@@ -17,6 +17,11 @@ $statusDropDown = '';
 $parishDropDown = '';
 $organisationTypeDropDown = '';
 
+$requestOpenCheckedYes ="CHECKED";
+$requestOpenCheckedNo ="";
+
+
+
 $parishId= 0;
 $councilsid = 0;
 $userId = $_SESSION['SESSION_USER_ID'];
@@ -474,10 +479,10 @@ form {
         <div class="fieldtitle"> Public request open (y/n) : </div> 
         <div class="td"> 
         <label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" class="normwidth" />
+        <input type="radio" name="thisPublic_request_open_ynField" value="y" id="RadioGroup1_0" class="normwidth" <?php echo $requestOpenCheckedYes; ?>/>
         Yes</label>
       	<label>
-        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" class="normwidth"  />
+        <input type="radio" name="thisPublic_request_open_ynField" value="n" id="RadioGroup1_1" class="normwidth" <?php echo $requestOpenCheckedNo; ?> />
         No</label>
       </div> 
     </div>

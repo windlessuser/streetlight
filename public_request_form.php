@@ -24,6 +24,7 @@ $requestOpenCheckedNo ="";
 $parishId= 0;
 $councilsid = 0;
 $userId = $_SESSION['SESSION_USER_ID'];
+$LoginStatus = $_SESSION['SESSION_STATUS'];
 
 $userInfo = User::retrieve_UserInfo($userId);
 try {$parishId = $userInfo->parishid; }catch(ActiveRecord\RecordNotFound $rnf) {$parishId = 0;}
@@ -39,7 +40,6 @@ try {$councilsid = $userInfo->councilid; }catch(ActiveRecord\RecordNotFound $rnf
 	$divisionvalues = retrieveDivisionsForComboByCouncilId($councilsid);
 	$districtvalues = retrieveDistrictsForComboByCouncilId($councilsid);
 		
-		echo count($schemes);
 	for ($i=0; $i<count($schemes); $i++) 
       {
 		$schemeId = $schemes[$i]['schemeid'];
@@ -132,6 +132,8 @@ $longtitude = '';
 $latitude = '';
 $OfficialComments='';
 
+if ($LoginStatus ==1)
+{
 if (isset($_POST['Streetlight_Submit']))
 {
 	
@@ -290,6 +292,13 @@ if (isset($_POST['Streetlight_Submit']))
 	$OfficialComments='';
 }
 
+
+
+
+
+
+
+}
 ?>
 
 

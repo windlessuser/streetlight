@@ -20,6 +20,7 @@ $organisationTypeDropDown = '';
 
 $requestOpenCheckedYes ="CHECKED";
 $requestOpenCheckedNo ="";
+$selectedStatus = '';
 
 $parishId= 0;
 $councilsid = 0;
@@ -137,13 +138,10 @@ if ($LoginStatus ==1)
 if (isset($_POST['Streetlight_Submit']))
 {
 	
-	GLOBAL $councilDropDown;
-	GLOBAL $divisionDropDown;
-	GLOBAL $districtDropDown;
-	GLOBAL $organisationTypeDropDown;
-	
 	$streetlightNo = $_POST['thisStreetlight_noField'];
 	$userId = $_SESSION['SESSION_USER_ID'];
+	//default selected status
+	
 	$parishId = 0;
 	$councilsid =0;
 	
@@ -177,16 +175,26 @@ if (isset($_POST['Streetlight_Submit']))
 		$defectName = $defects[$i]['streetlight_defecttype'];
         $defectDropDown .=  '<option value ='.$defectId .' > '.$defectName.' </option>'; 
       }
-
+	
+	 $statusDropDown = ''; //EMPTY DROP DOWN
 	for ($i=0; $i<count($status); $i++) 
       {
+
 		$statusId = $status[$i]['public_request_statusid'];
 		$statusName = $status[$i]['public_request_status'];
-        $statusDropDown .=  '<option value ='.$statusId .' > '.$statusName.' </option>'; 
+		if ($statusId == 1 && $statusName == 'New')
+		{
+			$selectedStatus = 'selected = "selected"';
+		}
+		else
+		{
+		}
+		
+        $statusDropDown .=  '<option value ='.$statusId .' '.$selectedStatus.'> '.$statusName.' </option>'; 
+		$selectedStatus = '';
       }
 	 
 
-	
 	 for ($i=0; $i<count($orgTypes); $i++) 
       {
 		$organTypeId = $orgTypes[$i]['organization_typeid'];
@@ -293,7 +301,10 @@ if (isset($_POST['Streetlight_Submit']))
 }
 
 
+if (isset($_POST['submitEnterPublic_requestForm']))
+{
 
+}
 
 
 

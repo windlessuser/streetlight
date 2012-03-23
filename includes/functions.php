@@ -159,7 +159,7 @@ function retrieveStatusForCombo()
 	$con = mysqlconnect();
 	$results = array();
 	$query=mysql_query("
-      SELECT * from public_request_status");
+      SELECT DISTINCT * from public_request_status");
 	if(!($query==null))
 	{
 		$num_rows = mysql_num_rows($query);

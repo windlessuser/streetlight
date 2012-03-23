@@ -287,7 +287,7 @@ if (isset($_POST['Streetlight_Submit']))
 	$defectRemarks='';
 	$publicRequestStatus='';
 	$requestOpen='';
-	$longtitude = '';
+	$longtitude  = ''; 
 	$latitude = '';
 	$OfficialComments='';
 }

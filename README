@@ -77,4 +77,6 @@ Updates:
 			- I've also updated curl_test.php to send out emails with the retrieved contact info.
 			- This will only work if the mail settings are setup for php, thus I'm unable to test it myself.
 			
-			
+23-03-2012   -Kadeem
+			-The retrieve of the form is basically finished.please use my updated database to test. The save routine is 85%.just one issue to solve.
+			valdeck will be working on it.

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2012 at 07:50 AM
+-- Generation Time: Mar 23, 2012 at 06:42 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -2879,6 +2879,7 @@ CREATE TABLE IF NOT EXISTS `public_request` (
   `email` varchar(25) DEFAULT NULL,
   `website` varchar(25) DEFAULT NULL,
   `remarks` text,
+  `parishid` int(11) NOT NULL,
   `councilid` int(10) NOT NULL,
   `divisionid` int(11) DEFAULT NULL,
   `districtid` int(10) DEFAULT NULL,
@@ -2914,22 +2915,22 @@ CREATE TABLE IF NOT EXISTS `public_request` (
 -- Dumping data for table `public_request`
 --
 
-INSERT INTO `public_request` (`public_requestid`, `reference_no`, `request_date`, `firstname`, `lastname`, `address`, `organization`, `organization_typeid`, `phone`, `cell`, `fax`, `email`, `website`, `remarks`, `councilid`, `divisionid`, `districtid`, `street`, `streetlight_location`, `streetlight_name`, `scheme`, `streetlight_no`, `streetlight_operational_yn`, `streetlight_defect_typeid`, `streetlight_defect_type_remarks`, `public_request_statusid`, `public_request_open_yn`, `userid`, `longitude`, `latitude`, `official_comments`, `create_date`, `update_date`) VALUES
-(1, '0910041180', '2009-10-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, NULL, NULL, NULL, 'awrfw', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-04 00:00:00', '2010-03-25 00:00:00'),
-(2, '0910234569', '2009-10-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 480, 1972, 'ffcbncvb', 'cbcvbcvbcvb', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-23 00:00:00', '2010-08-26 00:00:00'),
-(3, '0910264169', '2009-10-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 491, 26, NULL, 'dfgdfg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-26 00:00:00', '2009-10-26 00:00:00'),
-(4, '0911117573', '2009-11-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 486, 7, NULL, 'guiuih', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-11-11 00:00:00', '2009-11-11 00:00:00'),
-(5, '1002129276', '2010-02-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 493, 7, NULL, 'The big tree in the square', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 2, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-08-24 00:00:00'),
-(6, '1002123783', '2010-02-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 488, 26, 'SDFGSDFGDFG', 'SDFGSDFGDF', NULL, NULL, NULL, NULL, NULL, NULL, 11, 0, 2, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-02-12 00:00:00'),
-(7, '1002124874', '2010-02-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 493, 7, NULL, 'By the round about', NULL, NULL, NULL, NULL, 2, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-08-24 00:00:00'),
-(8, '1003181490', '2010-03-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 486, 20, NULL, 'GJGHJGHJ', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-18 00:00:00', '2010-03-18 00:00:00'),
-(9, '1003189082', '2010-03-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 486, 26, NULL, 'YUJHFGHFG', NULL, NULL, NULL, NULL, 2, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-18 00:00:00', '2010-03-18 00:00:00'),
-(10, '1003255102', '2010-03-25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 539, 75, NULL, 'sdfsdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-25 00:00:00', '2010-03-25 00:00:00'),
-(11, '1003306845', '2010-03-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 539, 75, NULL, 'dfgdfgdfg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-30 00:00:00', '2010-03-30 00:00:00'),
-(12, '1003308392', '2010-03-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 13, 493, 7, NULL, 'At the green shop', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-30 00:00:00', '2010-08-24 00:00:00'),
-(13, '1008267182', '2010-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dghdfgdfgdfgdgdgdgd', 13, 493, 7, 'test', 'test', NULL, NULL, NULL, NULL, 4, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-08-26 00:00:00', '2010-08-26 00:00:00'),
-(14, '1008262618', '2010-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4, 548, NULL, NULL, 'test', NULL, NULL, NULL, NULL, 4, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-08-26 00:00:00', '2010-08-26 00:00:00'),
-(15, '', '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'te3stsdf', 13, 487, 297, 'test', 'test', NULL, NULL, '12365874', NULL, 4, 'test', 0, 0, 1, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `public_request` (`public_requestid`, `reference_no`, `request_date`, `firstname`, `lastname`, `address`, `organization`, `organization_typeid`, `phone`, `cell`, `fax`, `email`, `website`, `remarks`, `parishid`, `councilid`, `divisionid`, `districtid`, `street`, `streetlight_location`, `streetlight_name`, `scheme`, `streetlight_no`, `streetlight_operational_yn`, `streetlight_defect_typeid`, `streetlight_defect_type_remarks`, `public_request_statusid`, `public_request_open_yn`, `userid`, `longitude`, `latitude`, `official_comments`, `create_date`, `update_date`) VALUES
+(1, '0910041180', '2009-10-21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 4, NULL, NULL, NULL, 'awrfw', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-04 00:00:00', '2010-03-25 00:00:00'),
+(2, '0910234569', '2009-10-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 480, 1972, 'ffcbncvb', 'cbcvbcvbcvb', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-23 00:00:00', '2010-08-26 00:00:00'),
+(3, '0910264169', '2009-10-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 491, 26, NULL, 'dfgdfg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-10-26 00:00:00', '2009-10-26 00:00:00'),
+(4, '0911117573', '2009-11-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 486, 7, NULL, 'guiuih', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 2, NULL, NULL, NULL, '2009-11-11 00:00:00', '2009-11-11 00:00:00'),
+(5, '1002129276', '2010-02-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 493, 7, NULL, 'The big tree in the square', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 2, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-08-24 00:00:00'),
+(6, '1002123783', '2010-02-12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 488, 26, 'SDFGSDFGDFG', 'SDFGSDFGDF', NULL, NULL, NULL, NULL, NULL, NULL, 11, 0, 2, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-02-12 00:00:00'),
+(7, '1002124874', '2010-02-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 493, 7, NULL, 'By the round about', NULL, NULL, NULL, NULL, 2, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-02-12 00:00:00', '2010-08-24 00:00:00'),
+(8, '1003181490', '2010-03-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 486, 20, NULL, 'GJGHJGHJ', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-18 00:00:00', '2010-03-18 00:00:00'),
+(9, '1003189082', '2010-03-18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 486, 26, NULL, 'YUJHFGHFG', NULL, NULL, NULL, NULL, 2, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-18 00:00:00', '2010-03-18 00:00:00'),
+(10, '1003255102', '2010-03-25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 2, 539, 75, NULL, 'sdfsdfsdf', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-25 00:00:00', '2010-03-25 00:00:00'),
+(11, '1003306845', '2010-03-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 2, 539, 75, NULL, 'dfgdfgdfg', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-30 00:00:00', '2010-03-30 00:00:00'),
+(12, '1003308392', '2010-03-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 13, 493, 7, NULL, 'At the green shop', NULL, NULL, NULL, NULL, 3, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-03-30 00:00:00', '2010-08-24 00:00:00'),
+(13, '1008267182', '2010-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dghdfgdfgdfgdgdgdgd', 0, 13, 493, 7, 'test', 'test', NULL, NULL, NULL, NULL, 4, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-08-26 00:00:00', '2010-08-26 00:00:00'),
+(14, '1008262618', '2010-08-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 4, 548, NULL, NULL, 'test', NULL, NULL, NULL, NULL, 4, NULL, 1, 0, 1, NULL, NULL, NULL, '2010-08-26 00:00:00', '2010-08-26 00:00:00'),
+(15, '', '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'te3stsdf', 0, 13, 487, 297, 'test', 'test', NULL, NULL, '12365874', NULL, 4, 'test', 0, 0, 1, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

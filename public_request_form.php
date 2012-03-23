@@ -304,10 +304,76 @@ if (isset($_POST['Streetlight_Submit']))
 if (isset($_POST['submitEnterPublic_requestForm']))
 {
 
+	$currentDateTime = getdate();
+	$year = $currentDateTime['year'];
+	$month = $currentDateTime['mon'];
+	$mday = $currentDateTime['mday'];
+	$requestDate = $year.'-'.$month.'-'.$day;
+	
+	$pr = new Public_Request();
+	$isOperational = 0;
+	$isRequestOpen =0;
+	
+	$yesOperational = $_POST['thisStreetlight_operational_ynField'];
+	$yesOpen =  $_POST['thisPublic_request_open_ynField'];
+	
+	if ($yesOperational == 'y')
+	{
+		$isOperational = 1;
+	}
+	else
+	{
+		$isOperational = 0;
+	}
+	
+	if ($yesOpen == 'y')
+	{
+		$isRequestOpen = 1;
+	}
+	else
+	{
+		$isRequestOpen = 0;
+	}
+	
+	//HAVEN'T FIGURED OUT HOW TO GET THE SELECTED ID FROM THE DROP DOWNS.
+	//THE NEXT STEP AFTER IS TO DISPLAY A MESSAGE THAT THE REQUEST HAS BEEN MADE
+	
+	$pr->reference_no = $_POST['thisReference_noField'];
+	$pr->requestDate = $requestDate;
+	$pr->firstname = $_POST['thisFirstnameField'];
+	$pr->lastname = $_POST['thisLastnameField'];
+	$pr->address = $_POST['thisAddressField'];
+	$pr->organization = $_POST['thisOrganizationField'];
+	$pr->organization_typeid = $_POST['organisationTypeSelect'];
+	$pr->phone = $_POST['thisPhoneField'];
+	$pr->cell = $_POST['thisCellField'];
+	$pr->fax = $_POST['thisFaxField'];
+	$pr->email = $_POST['thisEmailField'];
+	$pr->website = $_POST['thisWebsiteField'];
+	$pr->remarks = $_POST['thisRemarksField'];
+	$pr->parishid =$_POST['parishSelect'];  
+	$pr->councilid = $_POST['councilSelect'];
+	$pr->divisionid = $_POST['divisionSelect'];
+	$pr->districtid = $_POST['districtSelect'];
+	$pr->street = $_POST['thisStreetField'];
+	$pr->streetlight_location = $_POST['thisStrtLocationField'];
+	$pr->streetlight_name = $_POST['thisStreetlight_nameField'];
+	$pr->scheme = $_POST['schemeSelect'];
+	$pr->streetlight_no = $_POST['thisStreetlight_noField'];
+	$pr->streetlight_operational_yn = $isOperational;  
+	$pr->streetlight_defect_typeid = $_POST['defectSelect'];
+	$pr->streetlight_defect_type_remarks = $_POST['thisStreetlight_defect_type_remarksField'];
+	$pr->public_request_statusid = $_POST['statusSelect'];
+	$pr->public_request_open_yn = $isRequestOpen; 
+	$pr->userid = $_SESSION['SESSION_USER_ID'];
+	$pr->longitude = $_POST['thisLongitudeField'];
+	$pr->latitude = $_POST['thisLatitudeField'];
+	$pr->official_comments = $_POST['thisOfficial_commentsField'];
+	$pr->create_date = $requestDate;
+	$pr->update_date = $requestDate;
+	$pr->save();
+		
 }
-
-
-
 
 }
 ?>

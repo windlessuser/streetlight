@@ -1,5 +1,6 @@
 <?php
 include('models/streetlight.php');
+include('includes/functions.php');
 
 session_start(); 
 //this is just for testing purposes
@@ -27,16 +28,78 @@ $userId = $_SESSION['SESSION_USER_ID'];
 $userInfo = User::retrieve_UserInfo($userId);
 try {$parishId = $userInfo->parishid; }catch(ActiveRecord\RecordNotFound $rnf) {$parishId = 0;}
 try {$councilsid = $userInfo->councilid; }catch(ActiveRecord\RecordNotFound $rnf) {$councilsid = 0;}
+	
+	$parishes = retrieveParishesForCombo();
+	$defects = retrieveDefectsForCombo();
+	$orgTypes = retrieveOrgTypesForCombo();
+	$status = retrieveStatusForCombo();
+	$schemes = retrieveSchemesForComboByParishId($parishId);
 
-$parishes = Parish::retrieve_ParishesForCombo();
-$defects = Streetlight_Defect::retrieve_DefectsForCombo();
-$orgTypes = Organization_Type::retrieve_TypesForCombo();
-$status = Public_Request_Status::retrieve_StatusForCombo();
-$schemes = Scheme::retrieve_SchemesForCombo();
+	$councilvalues =  retrieveCouncilsForComboByParishId($parishId);
+	$divisionvalues = retrieveDivisionsForComboByCouncilId($councilsid);
+	$districtvalues = retrieveDistrictsForComboByCouncilId($councilsid);
+		
+		echo count($schemes);
+	for ($i=0; $i<count($schemes); $i++) 
+      {
+		$schemeId = $schemes[$i]['schemeid'];
+		$schemeName = $schemes[$i]['scheme'];
+        $schemesDropDown .=  '<option value ='.$schemeId .' > '.$schemeName.' </option>'; 
+      }
+	
+	for ($i=0; $i<count($defects); $i++) 
+      {
+		$defectId = $defects[$i]['streetlight_defecttypeid'];
+		$defectName = $defects[$i]['streetlight_defecttype'];
+        $defectDropDown .=  '<option value ='.$defectId .' > '.$defectName.' </option>'; 
+      }
 
-$councilvalues =  Councils::retrieve_CouncilsForComboByParish($parishId);
-$divisionvalues = Division::retrieve_DivisionsForComboByCouncilId($councilsid);
-$districtvalues = District::retrieve_DistrictsForComboByCouncilId($councilsid);
+	for ($i=0; $i<count($status); $i++) 
+      {
+		$statusId = $status[$i]['public_request_statusid'];
+		$statusName = $status[$i]['public_request_status'];
+        $statusDropDown .=  '<option value ='.$statusId .' > '.$statusName.' </option>'; 
+      }
+	 
+
+	
+	 for ($i=0; $i<count($orgTypes); $i++) 
+      {
+		$organTypeId = $orgTypes[$i]['organization_typeid'];
+		$organTypeName = $orgTypes[$i]['organization_type'];
+        $organisationTypeDropDown .=  '<option value ='.$organTypeId .' > '.$organTypeName.' </option>'; 
+      }
+	 
+	 
+	 for ($i=0; $i<count($parishes); $i++) 
+      {
+		$parishesId = $parishes[$i]['parishid'];
+		$parishName = $parishes[$i]['parish'];
+        $parishDropDown .=  '<option value ='.$parishesId .' > '.$parishName.' </option>'; 
+      }
+	
+	 for ($i=0; $i<count($districtvalues); $i++) 
+      {
+		$districtId = $districtvalues[$i]['districtid'];
+		$districtName = $districtvalues[$i]['district'];
+        $districtDropDown .=  '<option value ='.$districtId .' > '.$districtName.' </option>'; 
+      }
+	
+	
+	 for ($i=0; $i<count($councilvalues); $i++) 
+      {
+		$councilId = $councilvalues[$i]['councilid'];
+		$councilName = $councilvalues[$i]['council'];
+        $councilDropDown .=  '<option value ='.$councilId .' > '.$councilName.' </option>'; 
+      }
+	  
+	  for ($i=0; $i<count($divisionvalues); $i++) 
+      {
+		$divisionId = $divisionvalues[$i]['divisionid'];
+		$divisionName = $divisionvalues[$i]['division'];
+        $divisionDropDown .=  '<option value ='.$divisionId .' > '.$divisionName.' </option>'; 
+      }
+
 
 
 $requestDate='';
@@ -75,6 +138,7 @@ if (isset($_POST['Streetlight_Submit']))
 	GLOBAL $councilDropDown;
 	GLOBAL $divisionDropDown;
 	GLOBAL $districtDropDown;
+	GLOBAL $organisationTypeDropDown;
 	
 	$streetlightNo = $_POST['thisStreetlight_noField'];
 	$userId = $_SESSION['SESSION_USER_ID'];
@@ -88,19 +152,75 @@ if (isset($_POST['Streetlight_Submit']))
 	try {$parishId = $userInfo->parishid; }catch(ActiveRecord\RecordNotFound $rnf) {$parishId = 0;}
 	try {$councilsid = $userInfo->councilid; }catch(ActiveRecord\RecordNotFound $rnf) {$councilsid = 0;}
 		
-	$councilvalues =  Councils::retrieve_CouncilsForComboByParish($parishId);
-	$divisionvalues = Division::retrieve_DivisionsForComboByCouncilId($councilsid);
-	$districtvalues = District::retrieve_DistrictsForComboByCouncilId($councilsid);
-	
-	//trying to generate a string to populate the dropdown. not sure why its not working
-	if (count($councilvalues) > 0) 	  
-	{
-      foreach($councilvalues as $councils)
-	  {
-		//echo $councils->council;
-		//$councilDropDown .=  '<option> '. $council->council .' </option>'; 
+	$parishes = retrieveParishesForCombo();
+	$defects = retrieveDefectsForCombo();
+	$orgTypes = retrieveOrgTypesForCombo();
+	$status = retrieveStatusForCombo();
+	$schemes = retrieveSchemesForComboByParishId($parishId);
+
+	$councilvalues =  retrieveCouncilsForComboByParishId($parishId);
+	$divisionvalues = retrieveDivisionsForComboByCouncilId($councilsid);
+	$districtvalues = retrieveDistrictsForComboByCouncilId($councilsid);
+		
+	for ($i=0; $i<count($schemes); $i++) 
+      {
+		$schemeId = $schemes[$i]['schemeid'];
+		$schemeName = $schemes[$i]['scheme'];
+        $schemesDropDown .=  '<option value ='.$schemeId .' > '.$schemeName.' </option>'; 
       }
-	}
+	
+	for ($i=0; $i<count($defects); $i++) 
+      {
+		$defectId = $defects[$i]['streetlight_defecttypeid'];
+		$defectName = $defects[$i]['streetlight_defecttype'];
+        $defectDropDown .=  '<option value ='.$defectId .' > '.$defectName.' </option>'; 
+      }
+
+	for ($i=0; $i<count($status); $i++) 
+      {
+		$statusId = $status[$i]['public_request_statusid'];
+		$statusName = $status[$i]['public_request_status'];
+        $statusDropDown .=  '<option value ='.$statusId .' > '.$statusName.' </option>'; 
+      }
+	 
+
+	
+	 for ($i=0; $i<count($orgTypes); $i++) 
+      {
+		$organTypeId = $orgTypes[$i]['organization_typeid'];
+		$organTypeName = $orgTypes[$i]['organization_type'];
+        $organisationTypeDropDown .=  '<option value ='.$organTypeId .' > '.$organTypeName.' </option>'; 
+      }
+	 
+	 
+	 for ($i=0; $i<count($parishes); $i++) 
+      {
+		$parishesId = $parishes[$i]['parishid'];
+		$parishName = $parishes[$i]['parish'];
+        $parishDropDown .=  '<option value ='.$parishesId .' > '.$parishName.' </option>'; 
+      }
+	
+	 for ($i=0; $i<count($districtvalues); $i++) 
+      {
+		$districtId = $districtvalues[$i]['districtid'];
+		$districtName = $districtvalues[$i]['district'];
+        $districtDropDown .=  '<option value ='.$districtId .' > '.$districtName.' </option>'; 
+      }
+	
+	
+	 for ($i=0; $i<count($councilvalues); $i++) 
+      {
+		$councilId = $councilvalues[$i]['councilid'];
+		$councilName = $councilvalues[$i]['council'];
+        $councilDropDown .=  '<option value ='.$councilId .' > '.$councilName.' </option>'; 
+      }
+	  
+	  for ($i=0; $i<count($divisionvalues); $i++) 
+      {
+		$divisionId = $divisionvalues[$i]['divisionid'];
+		$divisionName = $divisionvalues[$i]['division'];
+        $divisionDropDown .=  '<option value ='.$divisionId .' > '.$divisionName.' </option>'; 
+      }
 
 	$currentDateTime = getdate();
 	$year = $currentDateTime['year'];
@@ -408,7 +528,7 @@ form {
         <div class="fieldtitle"> Scheme : </div> 
         <div class="td">
 			<select name ="schemeSelect" style="min-width:100px;">
-				<?php echo $schemeDropDown;?>
+				<?php echo $schemesDropDown;?>
 			</Select>
 		</div> 
     </div>

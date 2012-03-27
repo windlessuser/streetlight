@@ -19,4 +19,5 @@ function mysqlclose($con)
 	mysql_close($con);
 }
 
+print_r ( mysqlconnect());
 ?>

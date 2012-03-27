@@ -1,6 +1,6 @@
 <?php
-//require_once 'php-activerecord\ActiveRecord.php';
-require_once '../php-activerecord/ActiveRecord.php';
+//require_once '../php-activerecord/ActiveRecord.php';
+require_once 'php-activerecord/ActiveRecord.php';
 
 ActiveRecord\Config::initialize(function($cfg)
 {

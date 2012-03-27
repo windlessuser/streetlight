@@ -138,7 +138,7 @@ if ($LoginStatus ==1)
 if (isset($_POST['Streetlight_Submit']))
 {
 	
-	$streetlightNo = $_POST['thisStreetlight_noField'];
+	echo $streetlightNo = $_POST['thisStreetlight_noField'];
 	$userId = $_SESSION['SESSION_USER_ID'];
 	//default selected status
 	
@@ -308,7 +308,9 @@ if (isset($_POST['submitEnterPublic_requestForm']))
 	$year = $currentDateTime['year'];
 	$month = $currentDateTime['mon'];
 	$mday = $currentDateTime['mday'];
-	$requestDate = $year.'-'.$month.'-'.$day;
+	//$requestDate = $year.'-'.$month.'-'.$mday;
+	$requestDate = date("Y-m-d");
+
 	
 	$pr = new Public_Request();
 	$isOperational = 0;
@@ -339,7 +341,7 @@ if (isset($_POST['submitEnterPublic_requestForm']))
 	//THE NEXT STEP AFTER IS TO DISPLAY A MESSAGE THAT THE REQUEST HAS BEEN MADE
 	
 	$pr->reference_no = $_POST['thisReference_noField'];
-	$pr->requestDate = $requestDate;
+	$pr->request_date = $requestDate;
 	$pr->firstname = $_POST['thisFirstnameField'];
 	$pr->lastname = $_POST['thisLastnameField'];
 	$pr->address = $_POST['thisAddressField'];
@@ -368,11 +370,11 @@ if (isset($_POST['submitEnterPublic_requestForm']))
 	$pr->userid = $_SESSION['SESSION_USER_ID'];
 	$pr->longitude = $_POST['thisLongitudeField'];
 	$pr->latitude = $_POST['thisLatitudeField'];
-	$pr->official_comments = $_POST['thisOfficial_commentsField'];
+	if (isset($_POST['thisOfficial_commentsField'])){$pr->official_comments = $_POST['thisOfficial_commentsField'];}
 	$pr->create_date = $requestDate;
 	$pr->update_date = $requestDate;
 	$pr->save();
-		
+	die("Your request has been saved.");	
 }
 
 }
@@ -530,7 +532,7 @@ form {
         <div class="td"> <input type="text" name="thisLastnameField" size="23" value="<?php echo $lastName?>">  </div> 
     </div
 	
-    <div class="tr">
+    ><div class="tr">
         <div class="fieldtitle"> Address : </div> 
         <div class="td">
           <textarea name="thisAddressField" cols="19" rows="4">
@@ -655,7 +657,7 @@ form {
               <input type="radio" name="thisStreetlight_operational_ynField" value="y" id="RadioGroup1_2"  class="normwidth" />
               Yes</label>
             <label>
-              <input type="radio" name="thisStreetlight_operational_ynField" value="n" id="RadioGroup1_3"  class="normwidth" />
+              <input type="radio" name="thisStreetlight_operational_ynField" value="n" id="RadioGroup1_3"  class="normwidth" checked="CHECKED" />
               No</label>
         </div> 
     </div>

@@ -80,3 +80,7 @@ Updates:
 23-03-2012   -Kadeem
 			-The retrieve of the form is basically finished.please use my updated database to test. The save routine is 85%.just one issue to solve.
 			valdeck will be working on it.
+			
+27-03-2012	- Valdeck
+			- the save routine is now working, made a few db adjustments to accomodate. 
+			- also had to change the path to activerecord in the model files used in the public request form

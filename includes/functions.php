@@ -1,5 +1,26 @@
 <?php
-include('config.php');
+//include('config.php');
+
+function mysqlconnect()
+{
+	$con= mysql_connect("localhost","root","");
+	if (!$con)
+	{
+		die('Could not connect; ' . mysql_error());
+	}
+	else
+	{
+		mysql_select_db("streetlight") or die ("error");
+	}
+	return $con;
+}
+
+function mysqlclose($con)
+{
+	mysql_close($con);
+}
+
+
 
 function retrieveCouncilsForComboByParishId($ParishId)
 {
@@ -26,7 +47,6 @@ function retrieveCouncilsForComboByParishId($ParishId)
 	
 	return $results;
 }  
-
 function retrieveDivisionsForComboByCouncilId($councilsid)
 {
 	$con = mysqlconnect();
